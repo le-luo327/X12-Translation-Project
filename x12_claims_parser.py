@@ -3,6 +3,7 @@
 X12 837P Complete Structured Parser with All Information
 Uses PyX12 to create organized JSON with business headers
 Includes ALL data - no filtering
+MODIFIED: Dynamic file type detection with multi-method approach
 """
 
 import json
@@ -11,15 +12,88 @@ import os
 from pyx12.x12file import X12Reader
 
 
+def detect_file_type(transaction_set_id):
+    """
+    Detect the X12 file type based on transaction set identifier
+    """
+    file_types = {
+        '837': 'X12 837 Healthcare Claim (Type TBD)',
+        '835': 'X12 835 Healthcare Claim Payment/Advice',
+        '270': 'X12 270 Eligibility Inquiry',
+        '271': 'X12 271 Eligibility Response',
+        '276': 'X12 276 Claim Status Inquiry',
+        '277': 'X12 277 Claim Status Response',
+        '278': 'X12 278 Healthcare Services Review',
+        '820': 'X12 820 Payment Order/Remittance Advice',
+        '834': 'X12 834 Benefit Enrollment and Maintenance',
+        '997': 'X12 997 Functional Acknowledgment',
+        '999': 'X12 999 Implementation Acknowledgment'
+    }
+    
+    if not transaction_set_id:
+        return 'X12 Transaction (Unknown Type)'
+    
+    return file_types.get(transaction_set_id, f'X12 {transaction_set_id} Transaction')
+
+
+def determine_837_subtype(claim_type_code, filename='', provider_names=None, payer_names=None):
+    """
+    Determine 837 subtype using multiple detection methods
+    Priority:
+    1. BHT06 claim type code (P/I/D)
+    2. Filename pattern (837d, 837p, 837i)
+    3. Provider/Payer names containing "DENTAL"
+    4. Default to generic "Healthcare Claim"
+    """
+    # Method 1: Standard BHT06 codes
+    subtypes = {
+        'P': 'X12 837P Professional Healthcare Claim',
+        'I': 'X12 837I Institutional Healthcare Claim', 
+        'D': 'X12 837D Dental Healthcare Claim'
+    }
+    
+    # Remove tilde if present
+    if claim_type_code:
+        claim_type_code = claim_type_code.replace('~', '').strip()
+    
+    if claim_type_code in subtypes:
+        return subtypes[claim_type_code]
+    
+    # Method 2: Check filename
+    if filename:
+        filename_lower = filename.lower()
+        if '837d' in filename_lower or 'dental' in filename_lower:
+            return 'X12 837D Dental Healthcare Claim'
+        elif '837p' in filename_lower or 'professional' in filename_lower or 'prof' in filename_lower:
+            return 'X12 837P Professional Healthcare Claim'
+        elif '837i' in filename_lower or 'institutional' in filename_lower or 'inst' in filename_lower:
+            return 'X12 837I Institutional Healthcare Claim'
+    
+    # Method 3: Check provider/payer names for "DENTAL"
+    if provider_names:
+        for name in provider_names:
+            if name and 'DENTAL' in name.upper():
+                return 'X12 837D Dental Healthcare Claim'
+    
+    if payer_names:
+        for name in payer_names:
+            if name and 'DENTAL' in name.upper():
+                return 'X12 837D Dental Healthcare Claim'
+    
+    # Default: generic
+    return 'X12 837 Healthcare Claim'
+
+
 def translate_x12_complete_structured(filepath):
     """
     Translate X12 to structured JSON with ALL information
     Returns complete hierarchical structure with business headers
+    MODIFIED: Detects file type dynamically
     """
     result = {
         "file_info": {
             "source_file": filepath,
-            "file_type": "X12 837P Professional Healthcare Claim"
+            "file_type": "X12 Transaction (Processing...)"
         },
         "interchange_header": {},
         "functional_group": {},
@@ -27,7 +101,7 @@ def translate_x12_complete_structured(filepath):
         "billing_provider": {},
         "subscriber": {},
         "claims": [],
-        "all_segments": []  # Keep complete raw data too
+        "all_segments": []
     }
     
     current_claim = None
@@ -40,17 +114,13 @@ def translate_x12_complete_structured(filepath):
             for segment in reader:
                 seg_id = segment.get_seg_id()
                 
-                # Get complete segment data
                 seg_str = str(segment)
                 elements = seg_str.split('*')
                 
-                # Store in all_segments (complete raw data)
                 result["all_segments"].append({
                     "segment_id": seg_id,
                     "elements": elements
                 })
-                
-                # Parse into structured format
                 
                 # ISA - Interchange Control Header
                 if seg_id == 'ISA':
@@ -91,16 +161,22 @@ def translate_x12_complete_structured(filepath):
                 
                 # ST - Transaction Set Header
                 elif seg_id == 'ST':
+                    transaction_set_id = elements[1] if len(elements) > 1 else ""
+                    
                     result["transaction_set"] = {
                         "segment_id": "ST",
-                        "transaction_set_id": elements[1] if len(elements) > 1 else "",
+                        "transaction_set_id": transaction_set_id,
                         "transaction_control_number": elements[2] if len(elements) > 2 else "",
                         "implementation_convention_ref": elements[3] if len(elements) > 3 else "",
                         "all_elements": elements
                     }
+                    
+                    result["file_info"]["file_type"] = detect_file_type(transaction_set_id)
                 
                 # BHT - Beginning of Hierarchical Transaction
                 elif seg_id == 'BHT':
+                    claim_type = elements[6] if len(elements) > 6 else ""
+                    
                     result["transaction_set"]["beginning_hierarchical_transaction"] = {
                         "segment_id": "BHT",
                         "hierarchical_structure_code": elements[1] if len(elements) > 1 else "",
@@ -108,9 +184,11 @@ def translate_x12_complete_structured(filepath):
                         "reference_id": elements[3] if len(elements) > 3 else "",
                         "date": elements[4] if len(elements) > 4 else "",
                         "time": elements[5] if len(elements) > 5 else "",
-                        "claim_type": elements[6] if len(elements) > 6 else "",
+                        "claim_type": claim_type,
                         "all_elements": elements
                     }
+                    
+                    result["_needs_enhanced_detection"] = True
                 
                 # NM1 - Name/Entity
                 elif seg_id == 'NM1':
@@ -129,22 +207,20 @@ def translate_x12_complete_structured(filepath):
                         "all_elements": elements
                     }
                     
-                    # Categorize by entity type
-                    if entity_code == '85':  # Billing Provider
+                    if entity_code == '85':
                         result["billing_provider"] = entity_data
-                    elif entity_code == 'IL':  # Subscriber
+                    elif entity_code == 'IL':
                         result["subscriber"] = entity_data
-                    elif entity_code == 'QC':  # Patient
+                    elif entity_code == 'QC':
                         if current_claim:
                             current_claim["patient"] = entity_data
-                    elif entity_code == 'PR':  # Payer
+                    elif entity_code == 'PR':
                         if current_claim:
                             current_claim["payer"] = entity_data
-                    elif entity_code == '82':  # Rendering Provider
+                    elif entity_code == '82':
                         if current_claim:
                             current_claim["rendering_provider"] = entity_data
                     else:
-                        # Store other entities
                         if "other_entities" not in result:
                             result["other_entities"] = []
                         result["other_entities"].append(entity_data)
@@ -157,7 +233,6 @@ def translate_x12_complete_structured(filepath):
                         "address_line_2": elements[2] if len(elements) > 2 else "",
                         "all_elements": elements
                     }
-                    # Add to most recent entity
                     if current_claim and "patient" in current_claim:
                         current_claim["patient"]["address"] = address_data
                     elif result["billing_provider"]:
@@ -212,14 +287,12 @@ def translate_x12_complete_structured(filepath):
                         result["contacts"] = []
                     result["contacts"].append(contact_data)
                 
-                # CLM - Claim Information (start new claim)
+                # CLM - Claim Information
                 elif seg_id == 'CLM':
-                    # Save previous claim
                     if current_claim:
                         current_claim["service_lines"] = current_service_lines
                         result["claims"].append(current_claim)
                     
-                    # Start new claim
                     current_claim = {
                         "segment_id": "CLM",
                         "claim_id": elements[1] if len(elements) > 1 else "",
@@ -352,6 +425,35 @@ def translate_x12_complete_structured(filepath):
                 current_claim["service_lines"] = current_service_lines
                 result["claims"].append(current_claim)
             
+            # Enhanced 837 subtype detection
+            if result.get("_needs_enhanced_detection") and result["transaction_set"].get("transaction_set_id") == "837":
+                provider_names = []
+                payer_names = []
+                
+                if result.get("billing_provider", {}).get("name_last_or_organization"):
+                    provider_names.append(result["billing_provider"]["name_last_or_organization"])
+                
+                if result.get("subscriber", {}).get("name_last_or_organization"):
+                    payer_names.append(result["subscriber"]["name_last_or_organization"])
+                
+                for claim in result.get("claims", []):
+                    if claim.get("payer", {}).get("name_last_or_organization"):
+                        payer_names.append(claim["payer"]["name_last_or_organization"])
+                    if claim.get("rendering_provider", {}).get("name_last_or_organization"):
+                        provider_names.append(claim["rendering_provider"]["name_last_or_organization"])
+                
+                claim_type = result.get("transaction_set", {}).get("beginning_hierarchical_transaction", {}).get("claim_type", "")
+                filename = os.path.basename(filepath)
+                
+                result["file_info"]["file_type"] = determine_837_subtype(
+                    claim_type, 
+                    filename, 
+                    provider_names, 
+                    payer_names
+                )
+                
+                del result["_needs_enhanced_detection"]
+            
             # Add summary
             result["summary"] = {
                 "total_segments": len(result["all_segments"]),
@@ -390,6 +492,7 @@ def save_with_validation(data, output_file):
     
     print(f"✅ Translation complete!")
     print(f"💾 Output: {output_file}")
+    print(f"📊 File Type: {data['file_info']['file_type']}")
     print(f"📊 Summary:")
     print(f"   - Total segments: {data['summary']['total_segments']}")
     print(f"   - Total claims: {data['summary']['total_claims']}")
@@ -397,7 +500,6 @@ def save_with_validation(data, output_file):
     
     print(f"\n🔍 Validating JSON output...")
     
-    # JSON syntax
     try:
         with open(output_file, 'r') as f:
             json.load(f)
@@ -406,7 +508,6 @@ def save_with_validation(data, output_file):
         print(f"   ❌ JSON syntax error: {e}")
         return False
     
-    # Structure validation
     is_valid, msg = validate_output(data)
     if is_valid:
         print(f"   ✅ Structure validation passed")
@@ -421,16 +522,20 @@ def save_with_validation(data, output_file):
 def main():
     if len(sys.argv) < 2:
         print("=" * 70)
-        print("X12 837P Complete Structured Parser")
+        print("X12 Complete Structured Parser (Dynamic File Type Detection)")
         print("=" * 70)
         print("\nFeatures:")
         print("  ✅ Structured output with business headers")
         print("  ✅ ALL information included (no filtering)")
+        print("  ✅ Automatic file type detection")
+        print("  ✅ Supports: 837P, 837I, 837D, 835, 270, 271, 276, 277, etc.")
         print("  ✅ Automatic validation")
         print("\nUsage:")
         print("  python3 x12_claims_parser.py <input_file> [output_file]")
         print("\nExamples:")
-        print("  python3 x12_claims_parser.py input_files/X12-837.txt")
+        print("  python3 x12_claims_parser.py input_files/837p.txt")
+        print("  python3 x12_claims_parser.py input_files/837d.txt")
+        print("  python3 x12_claims_parser.py input_files/835.txt")
         print("=" * 70)
         sys.exit(1)
     

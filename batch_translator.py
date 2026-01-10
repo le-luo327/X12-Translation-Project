@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Batch X12 to JSON Translator with Complete Structured Output
 Processes multiple X12 files with validation
+ENHANCED: Shows detected file types in summary
 """
 
 import os
@@ -9,7 +11,6 @@ import sys
 import glob
 import json
 
-# Import translator functions from x12_claims_parser
 from x12_claims_parser import translate_x12_complete_structured, validate_output
 
 
@@ -22,7 +23,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
     print("=" * 70)
     print()
     
-    # Setup directories
     if not os.path.exists(input_dir):
         print(f"❌ Error: {input_dir} directory not found!")
         os.makedirs(input_dir)
@@ -31,7 +31,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
     
     os.makedirs(output_dir, exist_ok=True)
     
-    # Find all X12 files
     extensions = ['*.txt', '*.edi', '*.x12', '*.837', '*.TXT', '*.EDI']
     input_files = []
     
@@ -46,7 +45,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
     
     print(f"📊 Found {len(input_files)} file(s) to process\n")
     
-    # Process each file
     success_count = 0
     error_count = 0
     results = []
@@ -59,27 +57,25 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
         print(f"🔄 Processing: {filename}")
         
         try:
-            # Translate to structured JSON
             print(f"   📝 Translating to structured format...")
             data = translate_x12_complete_structured(input_file)
             
-            # Save to JSON
             with open(output_file, 'w') as f:
                 json.dump(data, f, indent=2)
             
-            # Get summary info
             summary = data.get('summary', {})
             segments = summary.get('total_segments', 0)
             claims = summary.get('total_claims', 0)
             service_lines = summary.get('total_service_lines', 0)
             
+            file_type = data.get('file_info', {}).get('file_type', 'Unknown')
+            
             print(f"   ✅ Translated → {os.path.basename(output_file)}")
+            print(f"      File Type: {file_type}")
             print(f"      {segments} segments, {claims} claim(s), {service_lines} service line(s)")
             
-            # Validate
             print(f"   🔍 Validating...")
             
-            # JSON syntax check
             try:
                 with open(output_file, 'r') as f:
                     json.load(f)
@@ -88,7 +84,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
                 syntax_valid = False
                 print(f"      ⚠️  JSON syntax error: {e}")
             
-            # Structure check
             is_valid, msg = validate_output(data)
             
             if syntax_valid and is_valid:
@@ -98,7 +93,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
                 print(f"   ⚠️  Validation warning: {msg if not is_valid else 'Syntax error'}")
                 validation_status = f"WARNING: {msg if not is_valid else 'Syntax error'}"
             
-            # Get file size
             size = os.path.getsize(output_file)
             size_str = f"{size:,} bytes" if size < 1024 else f"{size/1024:.1f} KB"
             
@@ -108,6 +102,7 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
                 'output': os.path.basename(output_file),
                 'status': 'SUCCESS',
                 'validation': validation_status,
+                'file_type': file_type,
                 'segments': segments,
                 'claims': claims,
                 'service_lines': service_lines,
@@ -126,7 +121,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
         
         print()
     
-    # Print summary
     print("=" * 70)
     print("Batch Processing Complete")
     print("=" * 70)
@@ -142,6 +136,7 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
                 val_icon = "✅" if result['validation'] == "VALID" else "⚠️"
                 print(f"  📄 {result['input']}")
                 print(f"     → {result['output']}")
+                print(f"     → Type: {result['file_type']}")
                 print(f"     → {result['segments']} segments, {result['claims']} claims, {result['service_lines']} lines")
                 print(f"     → {result['size']}")
                 print(f"     {val_icon} {result['validation']}")
@@ -156,7 +151,6 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
                 print(f"     Error: {result.get('error', 'Unknown error')}")
                 print()
     
-    # Overall statistics
     if success_count > 0:
         total_segments = sum(r['segments'] for r in results if r['status'] == 'SUCCESS')
         total_claims = sum(r['claims'] for r in results if r['status'] == 'SUCCESS')
@@ -167,13 +161,24 @@ def batch_translate(input_dir="input_files", output_dir="output_files"):
         print(f"   Total claims extracted: {total_claims}")
         print(f"   Total service lines: {total_lines}")
         print()
+        
+        file_type_counts = {}
+        for result in results:
+            if result['status'] == 'SUCCESS':
+                file_type = result['file_type']
+                file_type_counts[file_type] = file_type_counts.get(file_type, 0) + 1
+        
+        if file_type_counts:
+            print("📋 File Types Processed:")
+            for file_type, count in sorted(file_type_counts.items()):
+                print(f"   {file_type}: {count} file(s)")
+            print()
     
     print(f"📁 Output directory: {output_dir}/")
     print("=" * 70)
 
 
 def main():
-    """Main function"""
     if len(sys.argv) > 1:
         if sys.argv[1] in ['-h', '--help']:
             print("=" * 70)
@@ -189,8 +194,17 @@ def main():
             print("\nOutput Format:")
             print("  - Structured JSON with business headers")
             print("  - ALL information included (no filtering)")
+            print("  - Automatic file type detection")
             print("  - Automatic validation")
             print("  - Files named: <input>_parsed.json")
+            print("\nSupported Transaction Types:")
+            print("  - 837P (Professional Healthcare Claim)")
+            print("  - 837I (Institutional Healthcare Claim)")
+            print("  - 837D (Dental Healthcare Claim)")
+            print("  - 835 (Healthcare Claim Payment/Advice)")
+            print("  - 270/271 (Eligibility Inquiry/Response)")
+            print("  - 276/277 (Claim Status Inquiry/Response)")
+            print("  - And more...")
             print("=" * 70)
             return
         

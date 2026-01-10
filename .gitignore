@@ -1,47 +1,20 @@
-# Python
+# Output files (generated, not source code)
+output_files/*.json
+output_files_viewer/*.json
+
+# Python cache
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
 venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+env/
 
-# PyX12
-*.log
-
-# VS Code
+# IDE files
 .vscode/
-*.code-workspace
+.idea/
 
-# OS
+# OS files
 .DS_Store
-Thumbs.db
-
-# Output files (optional - comment out if you want to include samples)
-# output_files/*.json
-
-# Input files (keep folder but not large files)
-input_files/*.txt
-input_files/*.edi
-input_files/*.x12
-!input_files/.gitkeep
-
-# Keep folder structure
-!.gitkeep
