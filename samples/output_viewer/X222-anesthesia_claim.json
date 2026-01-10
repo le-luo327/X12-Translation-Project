@@ -1,0 +1,147 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "0001",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "0123",
+      "date": "2005-01-17",
+      "time": "10:23"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "PROVIDER MEDICAL GROUP",
+      "id": "N305~",
+      "contact": {
+        "name": "NINA",
+        "phone": "6155551212",
+        "extension": "911~"
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "ABC PAYER",
+      "id": "05440~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "PROVIDER MEDICAL GROUP",
+      "taxId": "2366554859~",
+      "address": {
+        "street": "1234 WEST END AVE~",
+        "city": "NASHVILLE",
+        "state": "TN",
+        "zip": "37232~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "PROVIDER MEDICAL GROUP",
+      "taxId": "2366554859~",
+      "address": {
+        "street": "1234 WEST END AVE~",
+        "city": "NASHVILLE",
+        "state": "TN",
+        "zip": "37232~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "",
+      "planType": "",
+      "firstName": "MARGARET",
+      "lastName": "JONES",
+      "id": "123456789A~",
+      "address": {
+        "street": "123 RAINBOW ROAD~",
+        "city": "NASHVILLE",
+        "state": "TN",
+        "zip": "37232~"
+      },
+      "dob": "1974-03-03",
+      "sex": "F~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "ABC PAYER",
+      "payerId": "05440~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "153829140",
+      "totalCharge": 827.0,
+      "placeOfService": "",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y~",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": ""
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "36616~",
+      "secondary": []
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {
+      "firstName": "JACOB",
+      "lastName": "TOWNSEND",
+      "npi": "5678912345~"
+    }
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "PROVIDER OP HOSP",
+      "taxId": "432198765~",
+      "address": {
+        "street": "345 MAIN DRIVE~",
+        "city": "NASHVILLE",
+        "state": "TN",
+        "zip": "37232~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "00142",
+        "charge": 827.0,
+        "unitQualifier": "MJ",
+        "units": 61.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      }
+    ]
+  }
+]

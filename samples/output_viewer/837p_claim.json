@@ -1,0 +1,143 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "0001",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "123456",
+      "date": "2026-01-05",
+      "time": "12:00"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "MEDICAL CLINIC",
+      "id": "123456789~",
+      "contact": {
+        "name": "JANE DOE",
+        "phone": "5555551234~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "BLUE CROSS BLUE SHIELD",
+      "id": "87726~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "MEDICAL CLINIC",
+      "taxId": "1234567890~",
+      "address": {
+        "street": "123 MAIN STREET~",
+        "city": "ANYTOWN",
+        "state": "CA",
+        "zip": "90210~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "MEDICAL CLINIC",
+      "taxId": "1234567890~",
+      "address": {
+        "street": "123 MAIN STREET~",
+        "city": "ANYTOWN",
+        "state": "CA",
+        "zip": "90210~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "",
+      "planType": "",
+      "firstName": "JOHN",
+      "lastName": "SMITH",
+      "id": "ABC123456789~",
+      "address": {
+        "street": "456 OAK AVENUE~",
+        "city": "ANYTOWN",
+        "state": "CA",
+        "zip": "90210~"
+      },
+      "dob": "1980-01-15",
+      "sex": "M~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "BLUE CROSS BLUE SHIELD",
+      "payerId": "87726~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "PATIENT001",
+      "totalCharge": 100.0,
+      "placeOfService": "",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y~",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": "PATIENT001~"
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "Z1234~",
+      "secondary": []
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {}
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "MEDICAL CLINIC",
+      "taxId": "1234567890~",
+      "address": {
+        "street": "123 MAIN STREET~",
+        "city": "ANYTOWN",
+        "state": "CA",
+        "zip": "90210~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "99213",
+        "charge": 75.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      }
+    ]
+  }
+]

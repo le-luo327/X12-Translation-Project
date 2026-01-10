@@ -1,0 +1,145 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "112233",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "16",
+      "date": "2005-03-26",
+      "time": "10:36"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "XYZ WHEELCHAIRS INC",
+      "id": "ABC55~",
+      "contact": {
+        "name": "JANE",
+        "phone": "2225551111~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "DMERC CARRIER",
+      "id": "99999~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "XYZ WHEELCHAIR INC",
+      "taxId": "7778889999~",
+      "address": {
+        "street": "1440 NORTH STREET~",
+        "city": "LAFAYETTE",
+        "state": "IN",
+        "zip": "47904~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "XYZ WHEELCHAIR INC",
+      "taxId": "7778889999~",
+      "address": {
+        "street": "1440 NORTH STREET~",
+        "city": "LAFAYETTE",
+        "state": "IN",
+        "zip": "47904~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "",
+      "planType": "",
+      "firstName": "JAMES",
+      "lastName": "SMITH",
+      "id": "987654321A~",
+      "address": {
+        "street": "12 MAIN ST~",
+        "city": "FRANKFORT",
+        "state": "IN",
+        "zip": "46209~"
+      },
+      "dob": "1920-10-23",
+      "sex": "M~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "DMERC CARRIER",
+      "payerId": "99999~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "SMI123",
+      "totalCharge": 75.0,
+      "placeOfService": "",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y~",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": ""
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "436",
+      "secondary": [
+        "3449~"
+      ]
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {}
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "XYZ WHEELCHAIR INC",
+      "taxId": "7778889999~",
+      "address": {
+        "street": "1440 NORTH STREET~",
+        "city": "LAFAYETTE",
+        "state": "IN",
+        "zip": "47904~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "K0001",
+        "charge": 75.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2~",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      }
+    ]
+  }
+]

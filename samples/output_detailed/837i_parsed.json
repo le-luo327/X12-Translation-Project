@@ -1,0 +1,832 @@
+{
+  "file_info": {
+    "source_file": "input_files/837i.txt",
+    "file_type": "X12 837I Institutional Healthcare Claim"
+  },
+  "interchange_header": {
+    "segment_id": "ISA",
+    "authorization_info_qualifier": "00",
+    "authorization_info": "          ",
+    "security_info_qualifier": "00",
+    "security_info": "          ",
+    "sender_id_qualifier": "ZZ",
+    "sender_id": "HOSPITAL_SUB   ",
+    "receiver_id_qualifier": "ZZ",
+    "receiver_id": "RECEIVER_ID    ",
+    "interchange_date": "260105",
+    "interchange_time": "1200",
+    "standards_id": "^",
+    "version_number": "00501",
+    "interchange_control_number": "000000003",
+    "acknowledgment_requested": "0",
+    "usage_indicator": "P",
+    "all_elements": [
+      "ISA",
+      "00",
+      "          ",
+      "00",
+      "          ",
+      "ZZ",
+      "HOSPITAL_SUB   ",
+      "ZZ",
+      "RECEIVER_ID    ",
+      "260105",
+      "1200",
+      "^",
+      "00501",
+      "000000003",
+      "0",
+      "P",
+      ":~"
+    ]
+  },
+  "functional_group": {
+    "segment_id": "GS",
+    "functional_id_code": "HC",
+    "application_sender_code": "HOSPITAL_SUB",
+    "application_receiver_code": "RECEIVER_ID",
+    "date": "20260105",
+    "time": "1200",
+    "group_control_number": "3",
+    "responsible_agency_code": "X",
+    "version_code": "005010X223A2~",
+    "all_elements": [
+      "GS",
+      "HC",
+      "HOSPITAL_SUB",
+      "RECEIVER_ID",
+      "20260105",
+      "1200",
+      "3",
+      "X",
+      "005010X223A2~"
+    ]
+  },
+  "transaction_set": {
+    "segment_id": "ST",
+    "transaction_set_id": "837",
+    "transaction_control_number": "0003",
+    "implementation_convention_ref": "005010X223A2~",
+    "all_elements": [
+      "ST",
+      "837",
+      "0003",
+      "005010X223A2~"
+    ],
+    "beginning_hierarchical_transaction": {
+      "segment_id": "BHT",
+      "hierarchical_structure_code": "0019",
+      "transaction_set_purpose_code": "00",
+      "reference_id": "HOSP789",
+      "date": "20260105",
+      "time": "1200",
+      "claim_type": "CH~",
+      "all_elements": [
+        "BHT",
+        "0019",
+        "00",
+        "HOSP789",
+        "20260105",
+        "1200",
+        "CH~"
+      ]
+    }
+  },
+  "billing_provider": {
+    "segment_id": "NM1",
+    "entity_id_code": "85",
+    "entity_type_qualifier": "2",
+    "name_last_or_organization": "GENERAL HOSPITAL",
+    "name_first": "",
+    "name_middle": "",
+    "name_prefix": "",
+    "name_suffix": "",
+    "id_code_qualifier": "XX",
+    "id_code": "1112223330~",
+    "all_elements": [
+      "NM1",
+      "85",
+      "2",
+      "GENERAL HOSPITAL",
+      "",
+      "",
+      "",
+      "",
+      "XX",
+      "1112223330~"
+    ],
+    "address": {
+      "segment_id": "N3",
+      "address_line_1": "555 SENIOR LANE~",
+      "address_line_2": "",
+      "all_elements": [
+        "N3",
+        "555 SENIOR LANE~"
+      ]
+    },
+    "geographic_location": {
+      "segment_id": "N4",
+      "city": "ANYTOWN",
+      "state": "CA",
+      "postal_code": "90212~",
+      "country_code": "",
+      "all_elements": [
+        "N4",
+        "ANYTOWN",
+        "CA",
+        "90212~"
+      ]
+    }
+  },
+  "subscriber": {
+    "segment_id": "NM1",
+    "entity_id_code": "IL",
+    "entity_type_qualifier": "1",
+    "name_last_or_organization": "WILLIAMS",
+    "name_first": "ROBERT",
+    "name_middle": "C",
+    "name_prefix": "",
+    "name_suffix": "",
+    "id_code_qualifier": "MI",
+    "id_code": "1EG4TE5MK73~",
+    "all_elements": [
+      "NM1",
+      "IL",
+      "1",
+      "WILLIAMS",
+      "ROBERT",
+      "C",
+      "",
+      "",
+      "MI",
+      "1EG4TE5MK73~"
+    ]
+  },
+  "claims": [
+    {
+      "segment_id": "CLM",
+      "claim_id": "HOSP001",
+      "total_charge": "5000",
+      "claim_filing_indicator": "",
+      "provider_signature_indicator": "",
+      "assignment_plan": "13~",
+      "benefits_assignment": "",
+      "release_info": "",
+      "all_elements": [
+        "CLM",
+        "HOSP001",
+        "5000",
+        "",
+        "",
+        "",
+        "",
+        "13~"
+      ],
+      "dates": [
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "434",
+          "date_format": "RD8",
+          "date_value": "20260101-20260103~",
+          "all_elements": [
+            "DTP",
+            "434",
+            "RD8",
+            "20260101-20260103~"
+          ]
+        },
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "435",
+          "date_format": "DT",
+          "date_value": "20260101~",
+          "all_elements": [
+            "DTP",
+            "435",
+            "DT",
+            "20260101~"
+          ]
+        },
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "472",
+          "date_format": "D8",
+          "date_value": "20260101~",
+          "all_elements": [
+            "DTP",
+            "472",
+            "D8",
+            "20260101~"
+          ]
+        },
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "472",
+          "date_format": "D8",
+          "date_value": "20260102~",
+          "all_elements": [
+            "DTP",
+            "472",
+            "D8",
+            "20260102~"
+          ]
+        },
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "472",
+          "date_format": "D8",
+          "date_value": "20260102~",
+          "all_elements": [
+            "DTP",
+            "472",
+            "D8",
+            "20260102~"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "segment_id": "REF",
+          "reference_id_qualifier": "D9",
+          "reference_id": "HOSP001~",
+          "description": "",
+          "all_elements": [
+            "REF",
+            "D9",
+            "HOSP001~"
+          ]
+        }
+      ],
+      "diagnosis_codes": {
+        "segment_id": "HI",
+        "codes": [
+          "BK:E119~"
+        ],
+        "all_elements": [
+          "HI",
+          "BK:E119~"
+        ]
+      },
+      "patient": {
+        "segment_id": "NM1",
+        "entity_id_code": "QC",
+        "entity_type_qualifier": "1",
+        "name_last_or_organization": "WILLIAMS",
+        "name_first": "ROBERT",
+        "name_middle": "C~",
+        "name_prefix": "",
+        "name_suffix": "",
+        "id_code_qualifier": "",
+        "id_code": "",
+        "all_elements": [
+          "NM1",
+          "QC",
+          "1",
+          "WILLIAMS",
+          "ROBERT",
+          "C~"
+        ]
+      },
+      "service_lines": []
+    }
+  ],
+  "all_segments": [
+    {
+      "segment_id": "ISA",
+      "elements": [
+        "ISA",
+        "00",
+        "          ",
+        "00",
+        "          ",
+        "ZZ",
+        "HOSPITAL_SUB   ",
+        "ZZ",
+        "RECEIVER_ID    ",
+        "260105",
+        "1200",
+        "^",
+        "00501",
+        "000000003",
+        "0",
+        "P",
+        ":~"
+      ]
+    },
+    {
+      "segment_id": "GS",
+      "elements": [
+        "GS",
+        "HC",
+        "HOSPITAL_SUB",
+        "RECEIVER_ID",
+        "20260105",
+        "1200",
+        "3",
+        "X",
+        "005010X223A2~"
+      ]
+    },
+    {
+      "segment_id": "ST",
+      "elements": [
+        "ST",
+        "837",
+        "0003",
+        "005010X223A2~"
+      ]
+    },
+    {
+      "segment_id": "BHT",
+      "elements": [
+        "BHT",
+        "0019",
+        "00",
+        "HOSP789",
+        "20260105",
+        "1200",
+        "CH~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "41",
+        "2",
+        "GENERAL HOSPITAL",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "111222333~"
+      ]
+    },
+    {
+      "segment_id": "PER",
+      "elements": [
+        "PER",
+        "IC",
+        "ADMISSIONS",
+        "TE",
+        "5555559999~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "40",
+        "2",
+        "MEDICARE",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "00123~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "elements": [
+        "HL",
+        "1",
+        "",
+        "20",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "85",
+        "2",
+        "GENERAL HOSPITAL",
+        "",
+        "",
+        "",
+        "",
+        "XX",
+        "1112223330~"
+      ]
+    },
+    {
+      "segment_id": "N3",
+      "elements": [
+        "N3",
+        "1000 HOSPITAL DRIVE~"
+      ]
+    },
+    {
+      "segment_id": "N4",
+      "elements": [
+        "N4",
+        "ANYTOWN",
+        "CA",
+        "90212~"
+      ]
+    },
+    {
+      "segment_id": "REF",
+      "elements": [
+        "REF",
+        "EI",
+        "111222333~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "elements": [
+        "HL",
+        "2",
+        "1",
+        "22",
+        "0~"
+      ]
+    },
+    {
+      "segment_id": "SBR",
+      "elements": [
+        "SBR",
+        "P",
+        "18",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "MA~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "IL",
+        "1",
+        "WILLIAMS",
+        "ROBERT",
+        "C",
+        "",
+        "",
+        "MI",
+        "1EG4TE5MK73~"
+      ]
+    },
+    {
+      "segment_id": "N3",
+      "elements": [
+        "N3",
+        "555 SENIOR LANE~"
+      ]
+    },
+    {
+      "segment_id": "N4",
+      "elements": [
+        "N4",
+        "ANYTOWN",
+        "CA",
+        "90212~"
+      ]
+    },
+    {
+      "segment_id": "DMG",
+      "elements": [
+        "DMG",
+        "D8",
+        "19450310",
+        "M~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "PR",
+        "2",
+        "MEDICARE",
+        "",
+        "",
+        "",
+        "",
+        "PI",
+        "00123~"
+      ]
+    },
+    {
+      "segment_id": "CLM",
+      "elements": [
+        "CLM",
+        "HOSP001",
+        "5000",
+        "",
+        "",
+        "",
+        "",
+        "13~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "434",
+        "RD8",
+        "20260101-20260103~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "435",
+        "DT",
+        "20260101~"
+      ]
+    },
+    {
+      "segment_id": "CL1",
+      "elements": [
+        "CL1",
+        "1",
+        "1",
+        "01~"
+      ]
+    },
+    {
+      "segment_id": "REF",
+      "elements": [
+        "REF",
+        "D9",
+        "HOSP001~"
+      ]
+    },
+    {
+      "segment_id": "HI",
+      "elements": [
+        "HI",
+        "ABK:I10~"
+      ]
+    },
+    {
+      "segment_id": "HI",
+      "elements": [
+        "HI",
+        "BK:I2510~"
+      ]
+    },
+    {
+      "segment_id": "HI",
+      "elements": [
+        "HI",
+        "BK:E119~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "elements": [
+        "HL",
+        "3",
+        "2",
+        "23",
+        "0~"
+      ]
+    },
+    {
+      "segment_id": "PAT",
+      "elements": [
+        "PAT",
+        "19~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "QC",
+        "1",
+        "WILLIAMS",
+        "ROBERT",
+        "C~"
+      ]
+    },
+    {
+      "segment_id": "SV2",
+      "elements": [
+        "SV2",
+        "0120",
+        "HC:99223",
+        "300",
+        "UN",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "472",
+        "D8",
+        "20260101~"
+      ]
+    },
+    {
+      "segment_id": "SV2",
+      "elements": [
+        "SV2",
+        "0250",
+        "HC:80053",
+        "200",
+        "UN",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "472",
+        "D8",
+        "20260102~"
+      ]
+    },
+    {
+      "segment_id": "SV2",
+      "elements": [
+        "SV2",
+        "0324",
+        "HC:93005",
+        "150",
+        "UN",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "472",
+        "D8",
+        "20260102~"
+      ]
+    },
+    {
+      "segment_id": "SE",
+      "elements": [
+        "SE",
+        "33",
+        "0003~"
+      ]
+    },
+    {
+      "segment_id": "GE",
+      "elements": [
+        "GE",
+        "1",
+        "3~"
+      ]
+    },
+    {
+      "segment_id": "IEA",
+      "elements": [
+        "IEA",
+        "1",
+        "000000003~"
+      ]
+    }
+  ],
+  "other_entities": [
+    {
+      "segment_id": "NM1",
+      "entity_id_code": "41",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization": "GENERAL HOSPITAL",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "id_code_qualifier": "46",
+      "id_code": "111222333~",
+      "all_elements": [
+        "NM1",
+        "41",
+        "2",
+        "GENERAL HOSPITAL",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "111222333~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "entity_id_code": "40",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization": "MEDICARE",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "id_code_qualifier": "46",
+      "id_code": "00123~",
+      "all_elements": [
+        "NM1",
+        "40",
+        "2",
+        "MEDICARE",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "00123~"
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "segment_id": "PER",
+      "contact_function_code": "IC",
+      "name": "ADMISSIONS",
+      "communication_number_qualifier_1": "TE",
+      "communication_number_1": "5555559999~",
+      "communication_number_qualifier_2": "",
+      "communication_number_2": "",
+      "all_elements": [
+        "PER",
+        "IC",
+        "ADMISSIONS",
+        "TE",
+        "5555559999~"
+      ]
+    }
+  ],
+  "hierarchical_levels": [
+    {
+      "segment_id": "HL",
+      "hierarchical_id": "1",
+      "parent_id": "",
+      "level_code": "20",
+      "child_code": "1~",
+      "all_elements": [
+        "HL",
+        "1",
+        "",
+        "20",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "hierarchical_id": "2",
+      "parent_id": "1",
+      "level_code": "22",
+      "child_code": "0~",
+      "all_elements": [
+        "HL",
+        "2",
+        "1",
+        "22",
+        "0~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "hierarchical_id": "3",
+      "parent_id": "2",
+      "level_code": "23",
+      "child_code": "0~",
+      "all_elements": [
+        "HL",
+        "3",
+        "2",
+        "23",
+        "0~"
+      ]
+    }
+  ],
+  "header_references": [
+    {
+      "segment_id": "REF",
+      "reference_id_qualifier": "EI",
+      "reference_id": "111222333~",
+      "description": "",
+      "all_elements": [
+        "REF",
+        "EI",
+        "111222333~"
+      ]
+    }
+  ],
+  "summary": {
+    "total_segments": 39,
+    "total_claims": 1,
+    "total_service_lines": 0
+  }
+}

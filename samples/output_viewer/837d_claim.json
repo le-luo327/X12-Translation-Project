@@ -1,0 +1,176 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "0004",
+      "version": "005010X224A3~",
+      "purpose": "0019",
+      "referenceId": "DENT789",
+      "date": "2026-01-05",
+      "time": "14:30"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "BRIGHT SMILE DENTISTRY",
+      "id": "555666777~",
+      "contact": {
+        "name": "DR MARTINEZ",
+        "phone": "5555552468~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "UNITED HEALTHCARE DENTAL",
+      "id": "98765~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "BRIGHT SMILE DENTISTRY",
+      "taxId": "5556667770~",
+      "address": {
+        "street": "2500 DENTAL CENTER BLVD~",
+        "city": "SPRINGFIELD",
+        "state": "IL",
+        "zip": "62701~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "BRIGHT SMILE DENTISTRY",
+      "taxId": "5556667770~",
+      "address": {
+        "street": "2500 DENTAL CENTER BLVD~",
+        "city": "SPRINGFIELD",
+        "state": "IL",
+        "zip": "62701~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "",
+      "planType": "",
+      "firstName": "LISA",
+      "lastName": "ANDERSON",
+      "id": "DEN555888999~",
+      "address": {
+        "street": "742 MAPLE STREET~",
+        "city": "SPRINGFIELD",
+        "state": "IL",
+        "zip": "62702~"
+      },
+      "dob": "1988-07-25",
+      "sex": "F~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "UNITED HEALTHCARE DENTAL",
+      "payerId": "98765~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "DENT002",
+      "totalCharge": 850.0,
+      "placeOfService": "",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": "DENT002~"
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "K0230~",
+      "secondary": []
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {}
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "BRIGHT SMILE DENTISTRY",
+      "taxId": "5556667770~",
+      "address": {
+        "street": "2500 DENTAL CENTER BLVD~",
+        "city": "SPRINGFIELD",
+        "state": "IL",
+        "zip": "62701~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "",
+        "procedureCode": "",
+        "charge": 0,
+        "unitQualifier": "",
+        "units": 0,
+        "diagnosisPointer": "",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 2,
+        "codeQualifier": "",
+        "procedureCode": "",
+        "charge": 0,
+        "unitQualifier": "",
+        "units": 0,
+        "diagnosisPointer": "",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 3,
+        "codeQualifier": "",
+        "procedureCode": "",
+        "charge": 0,
+        "unitQualifier": "",
+        "units": 0,
+        "diagnosisPointer": "",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 4,
+        "codeQualifier": "",
+        "procedureCode": "",
+        "charge": 0,
+        "unitQualifier": "",
+        "units": 0,
+        "diagnosisPointer": "",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      }
+    ]
+  }
+]

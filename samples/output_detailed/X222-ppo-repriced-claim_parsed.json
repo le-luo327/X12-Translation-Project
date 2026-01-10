@@ -1,0 +1,951 @@
+{
+  "file_info": {
+    "source_file": "input_files/X222-ppo-repriced-claim.edi",
+    "file_type": "X12 837 Healthcare Claim"
+  },
+  "interchange_header": {
+    "segment_id": "ISA",
+    "authorization_info_qualifier": "00",
+    "authorization_info": "          ",
+    "security_info_qualifier": "00",
+    "security_info": "          ",
+    "sender_id_qualifier": "ZZ",
+    "sender_id": "123456789012345",
+    "receiver_id_qualifier": "ZZ",
+    "receiver_id": "123456789012346",
+    "interchange_date": "061015",
+    "interchange_time": "1705",
+    "standards_id": ">",
+    "version_number": "00501",
+    "interchange_control_number": "000010216",
+    "acknowledgment_requested": "0",
+    "usage_indicator": "T",
+    "all_elements": [
+      "ISA",
+      "00",
+      "          ",
+      "00",
+      "          ",
+      "ZZ",
+      "123456789012345",
+      "ZZ",
+      "123456789012346",
+      "061015",
+      "1705",
+      ">",
+      "00501",
+      "000010216",
+      "0",
+      "T",
+      ":~"
+    ]
+  },
+  "functional_group": {
+    "segment_id": "GS",
+    "functional_id_code": "HC",
+    "application_sender_code": "1234567890",
+    "application_receiver_code": "9876543210",
+    "date": "20061015",
+    "time": "1705",
+    "group_control_number": "20213",
+    "responsible_agency_code": "X",
+    "version_code": "005010X222A1~",
+    "all_elements": [
+      "GS",
+      "HC",
+      "1234567890",
+      "9876543210",
+      "20061015",
+      "1705",
+      "20213",
+      "X",
+      "005010X222A1~"
+    ]
+  },
+  "transaction_set": {
+    "segment_id": "ST",
+    "transaction_set_id": "837",
+    "transaction_control_number": "1002",
+    "implementation_convention_ref": "005010X222A1~",
+    "all_elements": [
+      "ST",
+      "837",
+      "1002",
+      "005010X222A1~"
+    ],
+    "beginning_hierarchical_transaction": {
+      "segment_id": "BHT",
+      "hierarchical_structure_code": "0019",
+      "transaction_set_purpose_code": "00",
+      "reference_id": "1002",
+      "date": "20050620",
+      "time": "09460000",
+      "claim_type": "CH~",
+      "all_elements": [
+        "BHT",
+        "0019",
+        "00",
+        "1002",
+        "20050620",
+        "09460000",
+        "CH~"
+      ]
+    }
+  },
+  "billing_provider": {
+    "segment_id": "NM1",
+    "entity_id_code": "85",
+    "entity_type_qualifier": "2",
+    "name_last_or_organization": "HAPPY DOCTORS GROUP PRACTICE",
+    "name_first": "",
+    "name_middle": "",
+    "name_prefix": "",
+    "name_suffix": "",
+    "id_code_qualifier": "XX",
+    "id_code": "1234567890~",
+    "all_elements": [
+      "NM1",
+      "85",
+      "2",
+      "HAPPY DOCTORS GROUP PRACTICE",
+      "",
+      "",
+      "",
+      "",
+      "XX",
+      "1234567890~"
+    ],
+    "address": {
+      "segment_id": "N3",
+      "address_line_1": "123 FEEL GOOD ROAD~",
+      "address_line_2": "",
+      "all_elements": [
+        "N3",
+        "123 FEEL GOOD ROAD~"
+      ]
+    },
+    "geographic_location": {
+      "segment_id": "N4",
+      "city": "WASHINGTON",
+      "state": "IN",
+      "postal_code": "475010000~",
+      "country_code": "",
+      "all_elements": [
+        "N4",
+        "WASHINGTON",
+        "IN",
+        "475010000~"
+      ]
+    }
+  },
+  "subscriber": {
+    "segment_id": "NM1",
+    "entity_id_code": "IL",
+    "entity_type_qualifier": "1",
+    "name_last_or_organization": "RING",
+    "name_first": "DIAMOND",
+    "name_middle": "D",
+    "name_prefix": "",
+    "name_suffix": "",
+    "id_code_qualifier": "MI",
+    "id_code": "00124A089~",
+    "all_elements": [
+      "NM1",
+      "IL",
+      "1",
+      "RING",
+      "DIAMOND",
+      "D",
+      "",
+      "",
+      "MI",
+      "00124A089~"
+    ]
+  },
+  "claims": [
+    {
+      "segment_id": "CLM",
+      "claim_id": "ABC123-RI",
+      "total_charge": "28.75",
+      "claim_filing_indicator": "11:B:1",
+      "provider_signature_indicator": "Y",
+      "assignment_plan": "A",
+      "benefits_assignment": "Y",
+      "release_info": "Y",
+      "all_elements": [
+        "CLM",
+        "ABC123-RI",
+        "28.75",
+        "",
+        "",
+        "11:B:1",
+        "Y",
+        "A",
+        "Y",
+        "Y",
+        "P~"
+      ],
+      "references": [
+        {
+          "segment_id": "REF",
+          "reference_id_qualifier": "9A",
+          "reference_id": "0902352342~",
+          "description": "",
+          "all_elements": [
+            "REF",
+            "9A",
+            "0902352342~"
+          ]
+        },
+        {
+          "segment_id": "REF",
+          "reference_id_qualifier": "D9",
+          "reference_id": "061505501749388~",
+          "description": "",
+          "all_elements": [
+            "REF",
+            "D9",
+            "061505501749388~"
+          ]
+        }
+      ],
+      "diagnosis_codes": {
+        "segment_id": "HI",
+        "codes": [
+          "BK:496",
+          "BF:25000~"
+        ],
+        "all_elements": [
+          "HI",
+          "BK:496",
+          "BF:25000~"
+        ]
+      },
+      "rendering_provider": {
+        "segment_id": "NM1",
+        "entity_id_code": "82",
+        "entity_type_qualifier": "1",
+        "name_last_or_organization": "ANTHONY",
+        "name_first": "SUSAN",
+        "name_middle": "B",
+        "name_prefix": "",
+        "name_suffix": "",
+        "id_code_qualifier": "XX",
+        "id_code": "1122334455~",
+        "all_elements": [
+          "NM1",
+          "82",
+          "1",
+          "ANTHONY",
+          "SUSAN",
+          "B",
+          "",
+          "",
+          "XX",
+          "1122334455~"
+        ]
+      },
+      "dates": [
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "472",
+          "date_format": "D8",
+          "date_value": "20050514~",
+          "all_elements": [
+            "DTP",
+            "472",
+            "D8",
+            "20050514~"
+          ]
+        },
+        {
+          "segment_id": "DTP",
+          "date_qualifier": "472",
+          "date_format": "D8",
+          "date_value": "20050514~",
+          "all_elements": [
+            "DTP",
+            "472",
+            "D8",
+            "20050514~"
+          ]
+        }
+      ],
+      "service_lines": [
+        {
+          "segment_id": "LX",
+          "line_number": "1~",
+          "all_elements": [
+            "LX",
+            "1~"
+          ],
+          "service_info": {
+            "segment_id": "SV1",
+            "procedure_info": "HC:E0570:RR",
+            "line_charge": "25",
+            "unit_basis": "UN",
+            "unit_count": "1",
+            "place_of_service": "",
+            "diagnosis_pointer": "1:2~",
+            "all_elements": [
+              "SV1",
+              "HC:E0570:RR",
+              "25",
+              "UN",
+              "1",
+              "",
+              "",
+              "1:2~"
+            ]
+          }
+        },
+        {
+          "segment_id": "LX",
+          "line_number": "2~",
+          "all_elements": [
+            "LX",
+            "2~"
+          ],
+          "service_info": {
+            "segment_id": "SV1",
+            "procedure_info": "HC:A7003:NU",
+            "line_charge": "3.75",
+            "unit_basis": "UN",
+            "unit_count": "1",
+            "place_of_service": "",
+            "diagnosis_pointer": "1~",
+            "all_elements": [
+              "SV1",
+              "HC:A7003:NU",
+              "3.75",
+              "UN",
+              "1",
+              "",
+              "",
+              "1~"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "all_segments": [
+    {
+      "segment_id": "ISA",
+      "elements": [
+        "ISA",
+        "00",
+        "          ",
+        "00",
+        "          ",
+        "ZZ",
+        "123456789012345",
+        "ZZ",
+        "123456789012346",
+        "061015",
+        "1705",
+        ">",
+        "00501",
+        "000010216",
+        "0",
+        "T",
+        ":~"
+      ]
+    },
+    {
+      "segment_id": "GS",
+      "elements": [
+        "GS",
+        "HC",
+        "1234567890",
+        "9876543210",
+        "20061015",
+        "1705",
+        "20213",
+        "X",
+        "005010X222A1~"
+      ]
+    },
+    {
+      "segment_id": "ST",
+      "elements": [
+        "ST",
+        "837",
+        "1002",
+        "005010X222A1~"
+      ]
+    },
+    {
+      "segment_id": "BHT",
+      "elements": [
+        "BHT",
+        "0019",
+        "00",
+        "1002",
+        "20050620",
+        "09460000",
+        "CH~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "41",
+        "2",
+        "REGIONAL PPO NETWORK",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "123456789~"
+      ]
+    },
+    {
+      "segment_id": "PER",
+      "elements": [
+        "PER",
+        "IC",
+        "SUBMITTER CONTACT INFO",
+        "TE",
+        "8001231234~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "40",
+        "2",
+        "EXTRA HEALTHY INSURANCE",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "112244~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "elements": [
+        "HL",
+        "1",
+        "",
+        "20",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "85",
+        "2",
+        "HAPPY DOCTORS GROUP PRACTICE",
+        "",
+        "",
+        "",
+        "",
+        "XX",
+        "1234567890~"
+      ]
+    },
+    {
+      "segment_id": "N3",
+      "elements": [
+        "N3",
+        "P O BOX 123~"
+      ]
+    },
+    {
+      "segment_id": "N4",
+      "elements": [
+        "N4",
+        "FORT WAYNE",
+        "IN",
+        "462540000~"
+      ]
+    },
+    {
+      "segment_id": "REF",
+      "elements": [
+        "REF",
+        "EI",
+        "555512345~"
+      ]
+    },
+    {
+      "segment_id": "PER",
+      "elements": [
+        "PER",
+        "IC",
+        "SUE BILLINGSWORTH",
+        "TE",
+        "8881231234~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "elements": [
+        "HL",
+        "2",
+        "1",
+        "22",
+        "0~"
+      ]
+    },
+    {
+      "segment_id": "SBR",
+      "elements": [
+        "SBR",
+        "P",
+        "18",
+        "123XYZ",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "CI~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "IL",
+        "1",
+        "RING",
+        "DIAMOND",
+        "D",
+        "",
+        "",
+        "MI",
+        "00124A089~"
+      ]
+    },
+    {
+      "segment_id": "N3",
+      "elements": [
+        "N3",
+        "123 EXAMPLE DRIVE~"
+      ]
+    },
+    {
+      "segment_id": "N4",
+      "elements": [
+        "N4",
+        "INDIANAPOLIS",
+        "IN",
+        "462290000~"
+      ]
+    },
+    {
+      "segment_id": "DMG",
+      "elements": [
+        "DMG",
+        "D8",
+        "19401229",
+        "F~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "PR",
+        "2",
+        "EXTRA HEALTHY INSURANCE",
+        "",
+        "",
+        "",
+        "",
+        "PI",
+        "12345~"
+      ]
+    },
+    {
+      "segment_id": "CLM",
+      "elements": [
+        "CLM",
+        "ABC123-RI",
+        "28.75",
+        "",
+        "",
+        "11:B:1",
+        "Y",
+        "A",
+        "Y",
+        "Y",
+        "P~"
+      ]
+    },
+    {
+      "segment_id": "REF",
+      "elements": [
+        "REF",
+        "9A",
+        "0902352342~"
+      ]
+    },
+    {
+      "segment_id": "REF",
+      "elements": [
+        "REF",
+        "D9",
+        "061505501749388~"
+      ]
+    },
+    {
+      "segment_id": "HI",
+      "elements": [
+        "HI",
+        "BK:496",
+        "BF:25000~"
+      ]
+    },
+    {
+      "segment_id": "HCP",
+      "elements": [
+        "HCP",
+        "03",
+        "26.75",
+        "2",
+        "908231234~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "DN",
+        "1",
+        "DOE",
+        "JOHN",
+        "",
+        "",
+        "",
+        "XX",
+        "9988776655~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "82",
+        "1",
+        "ANTHONY",
+        "SUSAN",
+        "B",
+        "",
+        "",
+        "XX",
+        "1122334455~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "elements": [
+        "NM1",
+        "77",
+        "2",
+        "HAPPY DOCTORS GROUP~"
+      ]
+    },
+    {
+      "segment_id": "N3",
+      "elements": [
+        "N3",
+        "123 FEEL GOOD ROAD~"
+      ]
+    },
+    {
+      "segment_id": "N4",
+      "elements": [
+        "N4",
+        "WASHINGTON",
+        "IN",
+        "475010000~"
+      ]
+    },
+    {
+      "segment_id": "LX",
+      "elements": [
+        "LX",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "SV1",
+      "elements": [
+        "SV1",
+        "HC:E0570:RR",
+        "25",
+        "UN",
+        "1",
+        "",
+        "",
+        "1:2~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "472",
+        "D8",
+        "20050514~"
+      ]
+    },
+    {
+      "segment_id": "HCP",
+      "elements": [
+        "HCP",
+        "03",
+        "23.75",
+        "1.25",
+        "908231234~"
+      ]
+    },
+    {
+      "segment_id": "LX",
+      "elements": [
+        "LX",
+        "2~"
+      ]
+    },
+    {
+      "segment_id": "SV1",
+      "elements": [
+        "SV1",
+        "HC:A7003:NU",
+        "3.75",
+        "UN",
+        "1",
+        "",
+        "",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "DTP",
+      "elements": [
+        "DTP",
+        "472",
+        "D8",
+        "20050514~"
+      ]
+    },
+    {
+      "segment_id": "HCP",
+      "elements": [
+        "HCP",
+        "03",
+        "3",
+        ".75",
+        "908231234~"
+      ]
+    },
+    {
+      "segment_id": "SE",
+      "elements": [
+        "SE",
+        "37",
+        "1002~"
+      ]
+    },
+    {
+      "segment_id": "GE",
+      "elements": [
+        "GE",
+        "1",
+        "20213~"
+      ]
+    },
+    {
+      "segment_id": "IEA",
+      "elements": [
+        "IEA",
+        "1",
+        "000010216~"
+      ]
+    }
+  ],
+  "other_entities": [
+    {
+      "segment_id": "NM1",
+      "entity_id_code": "41",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization": "REGIONAL PPO NETWORK",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "id_code_qualifier": "46",
+      "id_code": "123456789~",
+      "all_elements": [
+        "NM1",
+        "41",
+        "2",
+        "REGIONAL PPO NETWORK",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "123456789~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "entity_id_code": "40",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization": "EXTRA HEALTHY INSURANCE",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "id_code_qualifier": "46",
+      "id_code": "112244~",
+      "all_elements": [
+        "NM1",
+        "40",
+        "2",
+        "EXTRA HEALTHY INSURANCE",
+        "",
+        "",
+        "",
+        "",
+        "46",
+        "112244~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "entity_id_code": "DN",
+      "entity_type_qualifier": "1",
+      "name_last_or_organization": "DOE",
+      "name_first": "JOHN",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "id_code_qualifier": "XX",
+      "id_code": "9988776655~",
+      "all_elements": [
+        "NM1",
+        "DN",
+        "1",
+        "DOE",
+        "JOHN",
+        "",
+        "",
+        "",
+        "XX",
+        "9988776655~"
+      ]
+    },
+    {
+      "segment_id": "NM1",
+      "entity_id_code": "77",
+      "entity_type_qualifier": "2",
+      "name_last_or_organization": "HAPPY DOCTORS GROUP~",
+      "name_first": "",
+      "name_middle": "",
+      "name_prefix": "",
+      "name_suffix": "",
+      "id_code_qualifier": "",
+      "id_code": "",
+      "all_elements": [
+        "NM1",
+        "77",
+        "2",
+        "HAPPY DOCTORS GROUP~"
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "segment_id": "PER",
+      "contact_function_code": "IC",
+      "name": "SUBMITTER CONTACT INFO",
+      "communication_number_qualifier_1": "TE",
+      "communication_number_1": "8001231234~",
+      "communication_number_qualifier_2": "",
+      "communication_number_2": "",
+      "all_elements": [
+        "PER",
+        "IC",
+        "SUBMITTER CONTACT INFO",
+        "TE",
+        "8001231234~"
+      ]
+    },
+    {
+      "segment_id": "PER",
+      "contact_function_code": "IC",
+      "name": "SUE BILLINGSWORTH",
+      "communication_number_qualifier_1": "TE",
+      "communication_number_1": "8881231234~",
+      "communication_number_qualifier_2": "",
+      "communication_number_2": "",
+      "all_elements": [
+        "PER",
+        "IC",
+        "SUE BILLINGSWORTH",
+        "TE",
+        "8881231234~"
+      ]
+    }
+  ],
+  "hierarchical_levels": [
+    {
+      "segment_id": "HL",
+      "hierarchical_id": "1",
+      "parent_id": "",
+      "level_code": "20",
+      "child_code": "1~",
+      "all_elements": [
+        "HL",
+        "1",
+        "",
+        "20",
+        "1~"
+      ]
+    },
+    {
+      "segment_id": "HL",
+      "hierarchical_id": "2",
+      "parent_id": "1",
+      "level_code": "22",
+      "child_code": "0~",
+      "all_elements": [
+        "HL",
+        "2",
+        "1",
+        "22",
+        "0~"
+      ]
+    }
+  ],
+  "header_references": [
+    {
+      "segment_id": "REF",
+      "reference_id_qualifier": "EI",
+      "reference_id": "555512345~",
+      "description": "",
+      "all_elements": [
+        "REF",
+        "EI",
+        "555512345~"
+      ]
+    }
+  ],
+  "summary": {
+    "total_segments": 41,
+    "total_claims": 1,
+    "total_service_lines": 2
+  }
+}

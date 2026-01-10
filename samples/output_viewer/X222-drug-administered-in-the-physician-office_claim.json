@@ -1,0 +1,160 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "0711",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "0013",
+      "date": "2004-08-01",
+      "time": "12:00"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "Associates in Medicine",
+      "id": "587654321~",
+      "contact": {
+        "name": "Bud Holly",
+        "phone": "8017268899~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "XYZ Receiver",
+      "id": "369852758~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "Associates in Medicine",
+      "taxId": "1234567893~",
+      "address": {
+        "street": "1313 Las Vegas Boulevard~",
+        "city": "Las Vegas",
+        "state": "NV",
+        "zip": "89109~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "Associates in Medicine",
+      "taxId": "1234567893~",
+      "address": {
+        "street": "1313 Las Vegas Boulevard~",
+        "city": "Las Vegas",
+        "state": "NV",
+        "zip": "89109~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "GRP01020102",
+      "planType": "",
+      "firstName": "Steve",
+      "lastName": "Vaughn",
+      "id": "MBRID12345~",
+      "address": {
+        "street": "236 Diamond ST~",
+        "city": "Las Vegas",
+        "state": "NV",
+        "zip": "89109~"
+      },
+      "dob": "1943-05-01",
+      "sex": "M~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "R&R Health Plan",
+      "payerId": "PLANID12345~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "CLMNO12345",
+      "totalCharge": 103.37,
+      "placeOfService": "11",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y~",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": ""
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "03591~",
+      "secondary": []
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {
+      "firstName": "Jim",
+      "lastName": "Hendrix",
+      "npi": "1122333341~"
+    }
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "Associates in Medicine",
+      "taxId": "1234567893~",
+      "address": {
+        "street": "1313 Las Vegas Boulevard~",
+        "city": "Las Vegas",
+        "state": "NV",
+        "zip": "89109~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "90782",
+        "charge": 50.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "11"
+      },
+      {
+        "lineNumber": 2,
+        "codeQualifier": "HC",
+        "procedureCode": "J1550",
+        "charge": 53.37,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "11"
+      }
+    ]
+  }
+]

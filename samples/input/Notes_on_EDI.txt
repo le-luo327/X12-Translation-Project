@@ -1,0 +1,29 @@
+SECTION 1.8 (pdf page 9, doc page 3)
+
+lower case from inbound are converted to upper case on outbound
+
+Seperators->
+	* seperates data elements
+	: seperates sub-elements
+	~ terminates a segment
+	
+Money amounts have explicit decimals
+
+----------------------------------------------------------------------------
+
+SEGMENT STRUCTURE (pdf page 11, doc page 5)
+
+segments are table like structure, multiple 'segments' Make up one packet type (like 837P or 835)
+
+- Segment Name  : industry standard name given to segments
+- Segment ID    : industry standard ID given to segments
+- Loop ID       : loop that segment should appear, NOT SURE ON THIS YET
+- Segment Useage: is segment Required or Situational
+- Segment Notes : brief descript of Segment purpose
+- Example       : this shows EDI syntaxed 
+Then follows a sub-table for elements of the segments
+	- Element ID  : industry standard element ID
+	- Usage       : This can be R (required), S (situtational), or N/A (not used)
+	- Element Name: industry standard element name
+	- Valid Values: If there is a value then it is the only expected
+	- Comments    : describrs contents including field length

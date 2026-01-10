@@ -1,0 +1,173 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "0024",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "0123",
+      "date": "2005-10-15",
+      "time": "10:23"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "KEY INSURANCE",
+      "id": "999996666~",
+      "contact": {
+        "name": "JERRY",
+        "phone": "3055552222~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "GREAT PRAIRIES",
+      "id": "567890~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "KILDARE",
+      "taxId": "1999996666~",
+      "address": {
+        "street": "1234",
+        "city": "MIAMI",
+        "state": "FL",
+        "zip": "33111~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "KILDARE",
+      "taxId": "1999996666~",
+      "address": {
+        "street": "1234",
+        "city": "MIAMI",
+        "state": "FL",
+        "zip": "33111~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "01",
+      "groupNumber": "",
+      "planType": "",
+      "firstName": "JANE",
+      "lastName": "SMITH",
+      "id": "JS00111223333~",
+      "address": {
+        "street": "236 N MAIN ST~",
+        "city": "MIAMI",
+        "state": "FL",
+        "zip": "33111~"
+      },
+      "dob": "1943-10-22",
+      "sex": "M~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "KEY INSURANCE COMPANY",
+      "payerId": "999996666~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "26407789",
+      "totalCharge": 79.04,
+      "placeOfService": "",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "I",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": ""
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "4779",
+      "secondary": [
+        "2724",
+        "2780",
+        "53081~"
+      ]
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {
+      "firstName": "",
+      "lastName": "",
+      "npi": ""
+    }
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "KILDARE ASSOCIATES",
+      "taxId": "1581234567~",
+      "address": {
+        "street": "2345 OCEAN BLVD~",
+        "city": "MIAMI",
+        "state": "FL",
+        "zip": "33111~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "99213",
+        "charge": 43.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2:3:4~",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 2,
+        "codeQualifier": "HC",
+        "procedureCode": "90782",
+        "charge": 15.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2~",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 3,
+        "codeQualifier": "HC",
+        "procedureCode": "J3301",
+        "charge": 21.04,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2~",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      }
+    ]
+  }
+]

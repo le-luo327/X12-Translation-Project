@@ -1,0 +1,180 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "000017712",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "000017712",
+      "date": "2005-02-08",
+      "time": "11:12"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "AAA AMBULANCE SERVICE",
+      "id": "376985369~",
+      "contact": {
+        "name": "LISA SMITH",
+        "phone": "3037752536~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "MEDICARE B",
+      "id": "123245~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "AAA AMBULANCE SERVICE",
+      "taxId": "2366554859~",
+      "address": {
+        "street": "12202 AIRPORT WAY~",
+        "city": "BROOMFIELD",
+        "state": "CO",
+        "zip": "800210021~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "AAA AMBULANCE SERVICE",
+      "taxId": "2366554859~",
+      "address": {
+        "street": "12202 AIRPORT WAY~",
+        "city": "BROOMFIELD",
+        "state": "CO",
+        "zip": "800210021~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "",
+      "planType": "",
+      "firstName": "SARAH",
+      "lastName": "JONES",
+      "id": "012345678A~",
+      "address": {
+        "street": "1129 REINDEER ROAD~",
+        "city": "CARR",
+        "state": "CO",
+        "zip": "80612~"
+      },
+      "dob": "1963-07-29",
+      "sex": "F~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "MEDICARE PART B",
+      "payerId": "123245~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "051068",
+      "totalCharge": 766.5,
+      "placeOfService": "",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": ""
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "8628",
+      "secondary": [
+        "E8888",
+        "9592",
+        "8540~"
+      ]
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {}
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "AAA AMBULANCE SERVICE",
+      "taxId": "2366554859~",
+      "address": {
+        "street": "12202 AIRPORT WAY~",
+        "city": "BROOMFIELD",
+        "state": "CO",
+        "zip": "800210021~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "A0427",
+        "charge": 700.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2:3:4",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 2,
+        "codeQualifier": "HC",
+        "procedureCode": "A0425",
+        "charge": 8.2,
+        "unitQualifier": "UN",
+        "units": 21.0,
+        "diagnosisPointer": "1:2:3:4",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 3,
+        "codeQualifier": "HC",
+        "procedureCode": "A0422",
+        "charge": 46.0,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2:3:4",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      },
+      {
+        "lineNumber": 4,
+        "codeQualifier": "HC",
+        "procedureCode": "A0382",
+        "charge": 12.3,
+        "unitQualifier": "UN",
+        "units": 1.0,
+        "diagnosisPointer": "1:2:3:4",
+        "emergencyIndicator": "",
+        "serviceDate": ""
+      }
+    ]
+  }
+]

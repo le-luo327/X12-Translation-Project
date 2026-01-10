@@ -1,0 +1,204 @@
+[
+  {
+    "section": "transaction",
+    "data": {
+      "type": "837",
+      "controlNumber": "0711",
+      "version": "005010X222A1~",
+      "purpose": "0019",
+      "referenceId": "0013",
+      "date": "2004-03-01",
+      "time": "12:00"
+    }
+  },
+  {
+    "section": "submitter",
+    "data": {
+      "name": "Quality Billing Service Corporation",
+      "id": "587654321~",
+      "contact": {
+        "name": "Bud Holly",
+        "phone": "8017268899~",
+        "extension": ""
+      }
+    }
+  },
+  {
+    "section": "receiver",
+    "data": {
+      "name": "XYZ Receiver",
+      "id": "369852758~"
+    }
+  },
+  {
+    "section": "billing_Provider",
+    "data": {
+      "name": "Professional Home IV, LLC",
+      "taxId": "1234567893~",
+      "address": {
+        "street": "1500 Industrial Drive~",
+        "city": "Libertyville",
+        "state": "IL",
+        "zip": "60048~"
+      }
+    }
+  },
+  {
+    "section": "Pay_To_provider",
+    "data": {
+      "name": "Professional Home IV, LLC",
+      "taxId": "1234567893~",
+      "address": {
+        "street": "1500 Industrial Drive~",
+        "city": "Libertyville",
+        "state": "IL",
+        "zip": "60048~"
+      }
+    }
+  },
+  {
+    "section": "subscriber",
+    "data": {
+      "relationship": "18",
+      "groupNumber": "GRP01020102",
+      "planType": "",
+      "firstName": "Steve",
+      "lastName": "Smith",
+      "id": "MBRID01234~",
+      "address": {
+        "street": "15210 Juliet Lane~",
+        "city": "Libertyville",
+        "state": "IL",
+        "zip": "60048~"
+      },
+      "dob": "1943-05-01",
+      "sex": "M~"
+    }
+  },
+  {
+    "section": "payer",
+    "data": {
+      "name": "R&R Health Plan",
+      "payerId": "PLANID12345~"
+    }
+  },
+  {
+    "section": "claim",
+    "data": {
+      "id": "CLMNO12345",
+      "totalCharge": 2232.93,
+      "placeOfService": "12",
+      "serviceType": "",
+      "indicators": {
+        "assigned": "A",
+        "providerSignature": "Y",
+        "releaseInfo": "Y~",
+        "patientSignature": "Y",
+        "relatedCause": ""
+      },
+      "onsetDate": "",
+      "clearinghouseClaimNumber": ""
+    }
+  },
+  {
+    "section": "diagnosis",
+    "data": {
+      "primary": "4659~",
+      "secondary": []
+    }
+  },
+  {
+    "section": "renderingProvider",
+    "data": {}
+  },
+  {
+    "section": "serviceFacility",
+    "data": {
+      "name": "Professional Home IV, LLC",
+      "taxId": "1234567893~",
+      "address": {
+        "street": "1500 Industrial Drive~",
+        "city": "Libertyville",
+        "state": "IL",
+        "zip": "60048~"
+      }
+    }
+  },
+  {
+    "section": "service_Lines",
+    "data": [
+      {
+        "lineNumber": 1,
+        "codeQualifier": "HC",
+        "procedureCode": "S9500",
+        "charge": 1400.0,
+        "unitQualifier": "UN",
+        "units": 7.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "12"
+      },
+      {
+        "lineNumber": 2,
+        "codeQualifier": "HC",
+        "procedureCode": "S5001",
+        "charge": 682.5,
+        "unitQualifier": "UN",
+        "units": 7.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "12"
+      },
+      {
+        "lineNumber": 3,
+        "codeQualifier": "HC",
+        "procedureCode": "S5000",
+        "charge": 15.12,
+        "unitQualifier": "UN",
+        "units": 14.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "12"
+      },
+      {
+        "lineNumber": 4,
+        "codeQualifier": "HC",
+        "procedureCode": "S5000",
+        "charge": 67.69,
+        "unitQualifier": "UN",
+        "units": 7.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "12"
+      },
+      {
+        "lineNumber": 5,
+        "codeQualifier": "HC",
+        "procedureCode": "S5000",
+        "charge": 57.12,
+        "unitQualifier": "UN",
+        "units": 14.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "12"
+      },
+      {
+        "lineNumber": 6,
+        "codeQualifier": "HC",
+        "procedureCode": "S5000",
+        "charge": 10.5,
+        "unitQualifier": "UN",
+        "units": 7.0,
+        "diagnosisPointer": "1~",
+        "emergencyIndicator": "",
+        "serviceDate": "",
+        "placeOfService": "12"
+      }
+    ]
+  }
+]
