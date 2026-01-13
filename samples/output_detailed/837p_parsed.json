@@ -196,18 +196,6 @@
             "RD8",
             "20260102-20260102~"
           ]
-        },
-        {
-          "segment_id": "DTP",
-          "date_qualifier": "472",
-          "date_format": "D8",
-          "date_value": "20260102~",
-          "all_elements": [
-            "DTP",
-            "472",
-            "D8",
-            "20260102~"
-          ]
         }
       ],
       "references": [
@@ -259,7 +247,21 @@
               "",
               "1~"
             ]
-          }
+          },
+          "dates": [
+            {
+              "segment_id": "DTP",
+              "date_qualifier": "472",
+              "date_format": "D8",
+              "date_value": "20260102~",
+              "all_elements": [
+                "DTP",
+                "472",
+                "D8",
+                "20260102~"
+              ]
+            }
+          ]
         }
       ]
     }

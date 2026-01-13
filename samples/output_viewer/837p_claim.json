@@ -4,7 +4,7 @@
     "data": {
       "type": "837",
       "controlNumber": "0001",
-      "version": "005010X222A1~",
+      "version": "005010X222A1",
       "purpose": "0019",
       "referenceId": "123456",
       "date": "2026-01-05",
@@ -15,10 +15,10 @@
     "section": "submitter",
     "data": {
       "name": "MEDICAL CLINIC",
-      "id": "123456789~",
+      "id": "123456789",
       "contact": {
         "name": "JANE DOE",
-        "phone": "5555551234~",
+        "phone": "5555551234",
         "extension": ""
       }
     }
@@ -27,19 +27,19 @@
     "section": "receiver",
     "data": {
       "name": "BLUE CROSS BLUE SHIELD",
-      "id": "87726~"
+      "id": "87726"
     }
   },
   {
     "section": "billing_Provider",
     "data": {
       "name": "MEDICAL CLINIC",
-      "taxId": "1234567890~",
+      "taxId": "1234567890",
       "address": {
-        "street": "123 MAIN STREET~",
+        "street": "123 MAIN STREET",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90210~"
+        "zip": "90210"
       }
     }
   },
@@ -47,12 +47,12 @@
     "section": "Pay_To_provider",
     "data": {
       "name": "MEDICAL CLINIC",
-      "taxId": "1234567890~",
+      "taxId": "1234567890",
       "address": {
-        "street": "123 MAIN STREET~",
+        "street": "123 MAIN STREET",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90210~"
+        "zip": "90210"
       }
     }
   },
@@ -64,22 +64,22 @@
       "planType": "",
       "firstName": "JOHN",
       "lastName": "SMITH",
-      "id": "ABC123456789~",
+      "id": "ABC123456789",
       "address": {
-        "street": "456 OAK AVENUE~",
+        "street": "456 OAK AVENUE",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90210~"
+        "zip": "90210"
       },
       "dob": "1980-01-15",
-      "sex": "M~"
+      "sex": "M"
     }
   },
   {
     "section": "payer",
     "data": {
       "name": "BLUE CROSS BLUE SHIELD",
-      "payerId": "87726~"
+      "payerId": "87726"
     }
   },
   {
@@ -92,18 +92,18 @@
       "indicators": {
         "assigned": "A",
         "providerSignature": "Y",
-        "releaseInfo": "Y~",
+        "releaseInfo": "Y",
         "patientSignature": "Y",
         "relatedCause": ""
       },
       "onsetDate": "",
-      "clearinghouseClaimNumber": "PATIENT001~"
+      "clearinghouseClaimNumber": "PATIENT001"
     }
   },
   {
     "section": "diagnosis",
     "data": {
-      "primary": "Z1234~",
+      "primary": "Z1234",
       "secondary": []
     }
   },
@@ -115,12 +115,12 @@
     "section": "serviceFacility",
     "data": {
       "name": "MEDICAL CLINIC",
-      "taxId": "1234567890~",
+      "taxId": "1234567890",
       "address": {
-        "street": "123 MAIN STREET~",
+        "street": "123 MAIN STREET",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90210~"
+        "zip": "90210"
       }
     }
   },
@@ -134,9 +134,9 @@
         "charge": 75.0,
         "unitQualifier": "UN",
         "units": 1.0,
-        "diagnosisPointer": "1~",
+        "diagnosisPointer": 1,
         "emergencyIndicator": "",
-        "serviceDate": ""
+        "serviceDate": "2026-01-02"
       }
     ]
   }

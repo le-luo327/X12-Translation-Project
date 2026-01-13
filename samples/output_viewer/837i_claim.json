@@ -4,7 +4,7 @@
     "data": {
       "type": "837",
       "controlNumber": "0003",
-      "version": "005010X223A2~",
+      "version": "005010X223A2",
       "purpose": "0019",
       "referenceId": "HOSP789",
       "date": "2026-01-05",
@@ -15,10 +15,10 @@
     "section": "submitter",
     "data": {
       "name": "GENERAL HOSPITAL",
-      "id": "111222333~",
+      "id": "111222333",
       "contact": {
         "name": "ADMISSIONS",
-        "phone": "5555559999~",
+        "phone": "5555559999",
         "extension": ""
       }
     }
@@ -27,19 +27,19 @@
     "section": "receiver",
     "data": {
       "name": "MEDICARE",
-      "id": "00123~"
+      "id": "00123"
     }
   },
   {
     "section": "billing_Provider",
     "data": {
       "name": "GENERAL HOSPITAL",
-      "taxId": "1112223330~",
+      "taxId": "1112223330",
       "address": {
-        "street": "1000 HOSPITAL DRIVE~",
+        "street": "1000 HOSPITAL DRIVE",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90212~"
+        "zip": "90212"
       }
     }
   },
@@ -47,12 +47,12 @@
     "section": "Pay_To_provider",
     "data": {
       "name": "GENERAL HOSPITAL",
-      "taxId": "1112223330~",
+      "taxId": "1112223330",
       "address": {
-        "street": "1000 HOSPITAL DRIVE~",
+        "street": "1000 HOSPITAL DRIVE",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90212~"
+        "zip": "90212"
       }
     }
   },
@@ -64,22 +64,22 @@
       "planType": "",
       "firstName": "ROBERT",
       "lastName": "WILLIAMS",
-      "id": "1EG4TE5MK73~",
+      "id": "1EG4TE5MK73",
       "address": {
-        "street": "555 SENIOR LANE~",
+        "street": "555 SENIOR LANE",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90212~"
+        "zip": "90212"
       },
       "dob": "1945-03-10",
-      "sex": "M~"
+      "sex": "M"
     }
   },
   {
     "section": "payer",
     "data": {
       "name": "MEDICARE",
-      "payerId": "00123~"
+      "payerId": "00123"
     }
   },
   {
@@ -90,20 +90,20 @@
       "placeOfService": "",
       "serviceType": "",
       "indicators": {
-        "assigned": "13~",
+        "assigned": "13",
         "providerSignature": "",
         "releaseInfo": "",
         "patientSignature": "",
         "relatedCause": ""
       },
       "onsetDate": "",
-      "clearinghouseClaimNumber": "HOSP001~"
+      "clearinghouseClaimNumber": "HOSP001"
     }
   },
   {
     "section": "diagnosis",
     "data": {
-      "primary": "E119~",
+      "primary": "E119",
       "secondary": []
     }
   },
@@ -115,12 +115,12 @@
     "section": "serviceFacility",
     "data": {
       "name": "GENERAL HOSPITAL",
-      "taxId": "1112223330~",
+      "taxId": "1112223330",
       "address": {
-        "street": "1000 HOSPITAL DRIVE~",
+        "street": "1000 HOSPITAL DRIVE",
         "city": "ANYTOWN",
         "state": "CA",
-        "zip": "90212~"
+        "zip": "90212"
       }
     }
   },

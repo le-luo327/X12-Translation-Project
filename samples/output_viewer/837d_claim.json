@@ -4,7 +4,7 @@
     "data": {
       "type": "837",
       "controlNumber": "0004",
-      "version": "005010X224A3~",
+      "version": "005010X224A3",
       "purpose": "0019",
       "referenceId": "DENT789",
       "date": "2026-01-05",
@@ -15,10 +15,10 @@
     "section": "submitter",
     "data": {
       "name": "BRIGHT SMILE DENTISTRY",
-      "id": "555666777~",
+      "id": "555666777",
       "contact": {
         "name": "DR MARTINEZ",
-        "phone": "5555552468~",
+        "phone": "5555552468",
         "extension": ""
       }
     }
@@ -27,19 +27,19 @@
     "section": "receiver",
     "data": {
       "name": "UNITED HEALTHCARE DENTAL",
-      "id": "98765~"
+      "id": "98765"
     }
   },
   {
     "section": "billing_Provider",
     "data": {
       "name": "BRIGHT SMILE DENTISTRY",
-      "taxId": "5556667770~",
+      "taxId": "5556667770",
       "address": {
-        "street": "2500 DENTAL CENTER BLVD~",
+        "street": "2500 DENTAL CENTER BLVD",
         "city": "SPRINGFIELD",
         "state": "IL",
-        "zip": "62701~"
+        "zip": "62701"
       }
     }
   },
@@ -47,12 +47,12 @@
     "section": "Pay_To_provider",
     "data": {
       "name": "BRIGHT SMILE DENTISTRY",
-      "taxId": "5556667770~",
+      "taxId": "5556667770",
       "address": {
-        "street": "2500 DENTAL CENTER BLVD~",
+        "street": "2500 DENTAL CENTER BLVD",
         "city": "SPRINGFIELD",
         "state": "IL",
-        "zip": "62701~"
+        "zip": "62701"
       }
     }
   },
@@ -64,22 +64,22 @@
       "planType": "",
       "firstName": "LISA",
       "lastName": "ANDERSON",
-      "id": "DEN555888999~",
+      "id": "DEN555888999",
       "address": {
-        "street": "742 MAPLE STREET~",
+        "street": "742 MAPLE STREET",
         "city": "SPRINGFIELD",
         "state": "IL",
-        "zip": "62702~"
+        "zip": "62702"
       },
       "dob": "1988-07-25",
-      "sex": "F~"
+      "sex": "F"
     }
   },
   {
     "section": "payer",
     "data": {
       "name": "UNITED HEALTHCARE DENTAL",
-      "payerId": "98765~"
+      "payerId": "98765"
     }
   },
   {
@@ -97,13 +97,13 @@
         "relatedCause": ""
       },
       "onsetDate": "",
-      "clearinghouseClaimNumber": "DENT002~"
+      "clearinghouseClaimNumber": "DENT002"
     }
   },
   {
     "section": "diagnosis",
     "data": {
-      "primary": "K0230~",
+      "primary": "K0230",
       "secondary": []
     }
   },
@@ -115,12 +115,12 @@
     "section": "serviceFacility",
     "data": {
       "name": "BRIGHT SMILE DENTISTRY",
-      "taxId": "5556667770~",
+      "taxId": "5556667770",
       "address": {
-        "street": "2500 DENTAL CENTER BLVD~",
+        "street": "2500 DENTAL CENTER BLVD",
         "city": "SPRINGFIELD",
         "state": "IL",
-        "zip": "62701~"
+        "zip": "62701"
       }
     }
   },
@@ -136,7 +136,7 @@
         "units": 0,
         "diagnosisPointer": "",
         "emergencyIndicator": "",
-        "serviceDate": ""
+        "serviceDate": "2026-01-04"
       },
       {
         "lineNumber": 2,
@@ -147,7 +147,7 @@
         "units": 0,
         "diagnosisPointer": "",
         "emergencyIndicator": "",
-        "serviceDate": ""
+        "serviceDate": "2026-01-04"
       },
       {
         "lineNumber": 3,
@@ -158,7 +158,7 @@
         "units": 0,
         "diagnosisPointer": "",
         "emergencyIndicator": "",
-        "serviceDate": ""
+        "serviceDate": "2026-01-04"
       },
       {
         "lineNumber": 4,
@@ -169,7 +169,7 @@
         "units": 0,
         "diagnosisPointer": "",
         "emergencyIndicator": "",
-        "serviceDate": ""
+        "serviceDate": "2026-01-04"
       }
     ]
   }

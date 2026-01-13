@@ -197,54 +197,6 @@
             "RD8",
             "20260104-20260104~"
           ]
-        },
-        {
-          "segment_id": "DTP",
-          "date_qualifier": "472",
-          "date_format": "D8",
-          "date_value": "20260104~",
-          "all_elements": [
-            "DTP",
-            "472",
-            "D8",
-            "20260104~"
-          ]
-        },
-        {
-          "segment_id": "DTP",
-          "date_qualifier": "472",
-          "date_format": "D8",
-          "date_value": "20260104~",
-          "all_elements": [
-            "DTP",
-            "472",
-            "D8",
-            "20260104~"
-          ]
-        },
-        {
-          "segment_id": "DTP",
-          "date_qualifier": "472",
-          "date_format": "D8",
-          "date_value": "20260104~",
-          "all_elements": [
-            "DTP",
-            "472",
-            "D8",
-            "20260104~"
-          ]
-        },
-        {
-          "segment_id": "DTP",
-          "date_qualifier": "472",
-          "date_format": "D8",
-          "date_value": "20260104~",
-          "all_elements": [
-            "DTP",
-            "472",
-            "D8",
-            "20260104~"
-          ]
         }
       ],
       "references": [
@@ -277,6 +229,20 @@
           "all_elements": [
             "LX",
             "1~"
+          ],
+          "dates": [
+            {
+              "segment_id": "DTP",
+              "date_qualifier": "472",
+              "date_format": "D8",
+              "date_value": "20260104~",
+              "all_elements": [
+                "DTP",
+                "472",
+                "D8",
+                "20260104~"
+              ]
+            }
           ]
         },
         {
@@ -285,6 +251,20 @@
           "all_elements": [
             "LX",
             "2~"
+          ],
+          "dates": [
+            {
+              "segment_id": "DTP",
+              "date_qualifier": "472",
+              "date_format": "D8",
+              "date_value": "20260104~",
+              "all_elements": [
+                "DTP",
+                "472",
+                "D8",
+                "20260104~"
+              ]
+            }
           ]
         },
         {
@@ -293,6 +273,20 @@
           "all_elements": [
             "LX",
             "3~"
+          ],
+          "dates": [
+            {
+              "segment_id": "DTP",
+              "date_qualifier": "472",
+              "date_format": "D8",
+              "date_value": "20260104~",
+              "all_elements": [
+                "DTP",
+                "472",
+                "D8",
+                "20260104~"
+              ]
+            }
           ]
         },
         {
@@ -301,6 +295,20 @@
           "all_elements": [
             "LX",
             "4~"
+          ],
+          "dates": [
+            {
+              "segment_id": "DTP",
+              "date_qualifier": "472",
+              "date_format": "D8",
+              "date_value": "20260104~",
+              "all_elements": [
+                "DTP",
+                "472",
+                "D8",
+                "20260104~"
+              ]
+            }
           ]
         }
       ]
