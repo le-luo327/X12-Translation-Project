@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#!/usr/bin/env python3
 """
 Batch X12 to JSON Translator with Complete Structured Output
 Processes multiple X12 files with validation

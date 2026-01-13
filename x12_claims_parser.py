@@ -327,7 +327,17 @@ def translate_x12_complete_structured(filepath):
                         "date_value": elements[3] if len(elements) > 3 else "",
                         "all_elements": elements
                     }
-                    if current_claim:
+                    
+                    date_qualifier = elements[1] if len(elements) > 1 else ""
+                    
+                    # Check if this is a service line date (472 = service date)
+                    if date_qualifier == '472' and current_claim and current_service_lines:
+                        # Add to the most recent service line
+                        if "dates" not in current_service_lines[-1]:
+                            current_service_lines[-1]["dates"] = []
+                        current_service_lines[-1]["dates"].append(date_data)
+                    elif current_claim:
+                        # Otherwise add to claim level
                         if "dates" not in current_claim:
                             current_claim["dates"] = []
                         current_claim["dates"].append(date_data)

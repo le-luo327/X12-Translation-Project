@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-X12 837 Parser for Claim Viewer
+X12 Parser for Claim Viewer
 Outputs section-based array format optimized for frontend display
 """
 
@@ -30,11 +30,19 @@ def parse_time(time_str):
         return time_str
 
 
+def clean_value(value):
+    """Remove tilde, whitespace, and segment terminators from X12 values"""
+    if not value:
+        return ""
+    return str(value).replace('~', '').strip()
+
+
 def clean_code(code):
     """Remove qualifier prefix from codes (e.g., 'ABK:K0230' -> 'K0230')"""
     if not code:
         return ""
-    return code.split(":")[-1] if ":" in code else code
+    cleaned = clean_value(code)
+    return cleaned.split(":")[-1] if ":" in cleaned else cleaned
 
 
 def safe_int(value, default=0):
@@ -42,7 +50,7 @@ def safe_int(value, default=0):
     if not value:
         return default
     try:
-        cleaned = str(value).replace('~', '').strip()
+        cleaned = clean_value(value)
         return int(cleaned) if cleaned else default
     except (ValueError, AttributeError):
         return default
@@ -53,7 +61,7 @@ def safe_float(value, default=0.0):
     if not value:
         return default
     try:
-        cleaned = str(value).replace('~', '').strip()
+        cleaned = clean_value(value)
         return float(cleaned) if cleaned else default
     except (ValueError, AttributeError):
         return default
@@ -63,8 +71,6 @@ def parse_x12_for_viewer(filepath):
     """
     Parse X12 file into section-based format for claim viewer
     Returns array of section objects
-    
-    Note: Creates one section array per claim in the file
     """
     
     # Storage for parsed data
@@ -78,12 +84,10 @@ def parse_x12_for_viewer(filepath):
     current_claim = None
     claims_data = []
     
-    # Temporary storage for addresses and demographics
+    # Temporary storage
     temp_addresses = {}
     temp_demographics = {}
     temp_contacts = {}
-    
-    # Track current entity context
     current_entity = None
     
     try:
@@ -97,41 +101,35 @@ def parse_x12_for_viewer(filepath):
                 
                 # ISA - Interchange Control Header
                 if seg_id == 'ISA':
-                    receiver['name'] = elements[8] if len(elements) > 8 else ""
-                    receiver['id'] = elements[8] if len(elements) > 8 else ""
-                    submitter['name'] = elements[6] if len(elements) > 6 else ""
-                
-                # GS - Functional Group Header
-                elif seg_id == 'GS':
-                    pass  # Can extract additional info if needed
+                    receiver['name'] = clean_value(elements[8] if len(elements) > 8 else "")
+                    receiver['id'] = clean_value(elements[8] if len(elements) > 8 else "")
+                    submitter['name'] = clean_value(elements[6] if len(elements) > 6 else "")
                 
                 # ST - Transaction Set Header
                 elif seg_id == 'ST':
-                    transaction['type'] = elements[1] if len(elements) > 1 else ""
-                    transaction['controlNumber'] = elements[2] if len(elements) > 2 else ""
-                    transaction['version'] = elements[3] if len(elements) > 3 else ""
+                    transaction['type'] = clean_value(elements[1] if len(elements) > 1 else "")
+                    transaction['controlNumber'] = clean_value(elements[2] if len(elements) > 2 else "")
+                    transaction['version'] = clean_value(elements[3] if len(elements) > 3 else "")
                 
                 # BHT - Beginning of Hierarchical Transaction
                 elif seg_id == 'BHT':
-                    transaction['purpose'] = elements[1] if len(elements) > 1 else ""
-                    transaction['referenceId'] = elements[3] if len(elements) > 3 else ""
-                    transaction['date'] = parse_date(elements[4] if len(elements) > 4 else "")
-                    transaction['time'] = parse_time(elements[5] if len(elements) > 5 else "")
+                    transaction['purpose'] = clean_value(elements[1] if len(elements) > 1 else "")
+                    transaction['referenceId'] = clean_value(elements[3] if len(elements) > 3 else "")
+                    transaction['date'] = parse_date(clean_value(elements[4] if len(elements) > 4 else ""))
+                    transaction['time'] = parse_time(clean_value(elements[5] if len(elements) > 5 else ""))
                 
                 # NM1 - Name/Entity
                 elif seg_id == 'NM1':
-                    entity_code = elements[1] if len(elements) > 1 else ""
-                    entity_type = elements[2] if len(elements) > 2 else ""
+                    entity_code = clean_value(elements[1] if len(elements) > 1 else "")
                     
                     entity_data = {
-                        'name': elements[3] if len(elements) > 3 else "",
-                        'firstName': elements[4] if len(elements) > 4 else "",
-                        'lastName': elements[3] if len(elements) > 3 else "",
-                        'id': elements[9] if len(elements) > 9 else "",
-                        'idQualifier': elements[8] if len(elements) > 8 else ""
+                        'name': clean_value(elements[3] if len(elements) > 3 else ""),
+                        'firstName': clean_value(elements[4] if len(elements) > 4 else ""),
+                        'lastName': clean_value(elements[3] if len(elements) > 3 else ""),
+                        'id': clean_value(elements[9] if len(elements) > 9 else ""),
+                        'idQualifier': clean_value(elements[8] if len(elements) > 8 else "")
                     }
                     
-                    # Route to appropriate entity
                     if entity_code == '41':  # Submitter
                         current_entity = 'submitter'
                         submitter['name'] = entity_data['name']
@@ -154,7 +152,7 @@ def parse_x12_for_viewer(filepath):
                         pay_to_provider['taxId'] = entity_data['id']
                         pay_to_provider['address'] = {}
                     
-                    elif entity_code == 'IL':  # Subscriber/Insured
+                    elif entity_code == 'IL':  # Subscriber
                         current_entity = 'subscriber'
                         subscriber['firstName'] = entity_data['firstName']
                         subscriber['lastName'] = entity_data['lastName']
@@ -193,7 +191,7 @@ def parse_x12_for_viewer(filepath):
                 # N3 - Address
                 elif seg_id == 'N3':
                     address_data = {
-                        'street': elements[1] if len(elements) > 1 else ""
+                        'street': clean_value(elements[1] if len(elements) > 1 else "")
                     }
                     temp_addresses[current_entity] = address_data
                 
@@ -201,12 +199,11 @@ def parse_x12_for_viewer(filepath):
                 elif seg_id == 'N4':
                     if current_entity in temp_addresses:
                         temp_addresses[current_entity].update({
-                            'city': elements[1] if len(elements) > 1 else "",
-                            'state': elements[2] if len(elements) > 2 else "",
-                            'zip': elements[3] if len(elements) > 3 else ""
+                            'city': clean_value(elements[1] if len(elements) > 1 else ""),
+                            'state': clean_value(elements[2] if len(elements) > 2 else ""),
+                            'zip': clean_value(elements[3] if len(elements) > 3 else "")
                         })
                         
-                        # Apply address to appropriate entity
                         if current_entity == 'billing_provider':
                             billing_provider['address'] = temp_addresses[current_entity]
                         elif current_entity == 'pay_to_provider':
@@ -221,40 +218,38 @@ def parse_x12_for_viewer(filepath):
                 elif seg_id == 'PER':
                     if current_entity == 'submitter':
                         submitter['contact'] = {
-                            'name': elements[2] if len(elements) > 2 else "",
-                            'phone': elements[4] if len(elements) > 4 else "",
-                            'extension': elements[6] if len(elements) > 6 else ""
+                            'name': clean_value(elements[2] if len(elements) > 2 else ""),
+                            'phone': clean_value(elements[4] if len(elements) > 4 else ""),
+                            'extension': clean_value(elements[6] if len(elements) > 6 else "")
                         }
                 
                 # SBR - Subscriber Information
                 elif seg_id == 'SBR':
-                    subscriber['relationship'] = elements[2] if len(elements) > 2 else "self"
-                    subscriber['groupNumber'] = elements[3] if len(elements) > 3 else ""
-                    subscriber['planType'] = elements[5] if len(elements) > 5 else ""
+                    subscriber['relationship'] = clean_value(elements[2] if len(elements) > 2 else "self")
+                    subscriber['groupNumber'] = clean_value(elements[3] if len(elements) > 3 else "")
+                    subscriber['planType'] = clean_value(elements[5] if len(elements) > 5 else "")
                 
                 # DMG - Demographics
                 elif seg_id == 'DMG':
                     if current_entity == 'subscriber':
-                        subscriber['dob'] = parse_date(elements[2] if len(elements) > 2 else "")
-                        subscriber['sex'] = elements[3] if len(elements) > 3 else ""
+                        subscriber['dob'] = parse_date(clean_value(elements[2] if len(elements) > 2 else ""))
+                        subscriber['sex'] = clean_value(elements[3] if len(elements) > 3 else "")
                 
-                # CLM - Claim Information (start new claim)
+                # CLM - Claim Information
                 elif seg_id == 'CLM':
-                    # Save previous claim if exists
                     if current_claim:
                         claims_data.append(current_claim)
                     
-                    # Start new claim
                     current_claim = {
-                        'id': elements[1] if len(elements) > 1 else "",
+                        'id': clean_value(elements[1] if len(elements) > 1 else ""),
                         'totalCharge': safe_float(elements[2] if len(elements) > 2 else ""),
                         'placeOfService': "",
                         'serviceType': "",
                         'indicators': {
-                            'assigned': elements[7] if len(elements) > 7 else "",
-                            'providerSignature': elements[6] if len(elements) > 6 else "",
-                            'releaseInfo': elements[9] if len(elements) > 9 else "",
-                            'patientSignature': elements[8] if len(elements) > 8 else "",
+                            'assigned': clean_value(elements[7] if len(elements) > 7 else ""),
+                            'providerSignature': clean_value(elements[6] if len(elements) > 6 else ""),
+                            'releaseInfo': clean_value(elements[9] if len(elements) > 9 else ""),
+                            'patientSignature': clean_value(elements[8] if len(elements) > 8 else ""),
                             'relatedCause': ""
                         },
                         'onsetDate': "",
@@ -274,21 +269,24 @@ def parse_x12_for_viewer(filepath):
                                 current_claim['diagnosis']['secondary'].append(code)
                 
                 # DTP - Date/Time/Period
-                elif seg_id == 'DTP' and current_claim:
-                    date_qualifier = elements[1] if len(elements) > 1 else ""
-                    date_value = parse_date(elements[3] if len(elements) > 3 else "")
+                elif seg_id == 'DTP':
+                    date_qualifier = clean_value(elements[1] if len(elements) > 1 else "")
+                    date_value = parse_date(clean_value(elements[3] if len(elements) > 3 else ""))
                     
-                    # 431 = Onset, 454 = Admission
-                    if date_qualifier in ['431', '454']:
+                    # 472 = Service date
+                    if date_qualifier == '472' and current_claim and current_claim['serviceLines']:
+                        if len(current_claim['serviceLines']) > 0:
+                            current_claim['serviceLines'][-1]['serviceDate'] = date_value
+                    
+                    # 431/454 = Onset/Admission date
+                    elif date_qualifier in ['431', '454'] and current_claim:
                         current_claim['onsetDate'] = date_value
-                    # 472 = Service date (handled in service lines)
                 
                 # REF - Reference Information
                 elif seg_id == 'REF' and current_claim:
-                    ref_qualifier = elements[1] if len(elements) > 1 else ""
-                    ref_value = elements[2] if len(elements) > 2 else ""
+                    ref_qualifier = clean_value(elements[1] if len(elements) > 1 else "")
+                    ref_value = clean_value(elements[2] if len(elements) > 2 else "")
                     
-                    # D9 = Clearinghouse claim number
                     if ref_qualifier == 'D9':
                         current_claim['clearinghouseClaimNumber'] = ref_value
                 
@@ -311,8 +309,7 @@ def parse_x12_for_viewer(filepath):
                 elif seg_id == 'SV1' and current_claim and current_claim['serviceLines']:
                     service_line = current_claim['serviceLines'][-1]
                     
-                    # Parse procedure code
-                    procedure_info = elements[1] if len(elements) > 1 else ""
+                    procedure_info = clean_value(elements[1] if len(elements) > 1 else "")
                     if ':' in procedure_info:
                         parts = procedure_info.split(':')
                         service_line['codeQualifier'] = parts[0]
@@ -321,37 +318,24 @@ def parse_x12_for_viewer(filepath):
                         service_line['procedureCode'] = procedure_info
                     
                     service_line['charge'] = safe_float(elements[2] if len(elements) > 2 else "")
-                    service_line['unitQualifier'] = elements[3] if len(elements) > 3 else ""
+                    service_line['unitQualifier'] = clean_value(elements[3] if len(elements) > 3 else "")
                     service_line['units'] = safe_float(elements[4] if len(elements) > 4 else "")
                     
-                    # Place of service
                     if len(elements) > 5 and elements[5]:
-                        service_line['placeOfService'] = elements[5]
+                        service_line['placeOfService'] = clean_value(elements[5])
                         if not current_claim['placeOfService']:
-                            current_claim['placeOfService'] = elements[5]
+                            current_claim['placeOfService'] = clean_value(elements[5])
                     
-                    # Diagnosis pointer
                     if len(elements) > 7 and elements[7]:
-                        service_line['diagnosisPointer'] = elements[7]
-                
-                # DTP at service line level
-                elif seg_id == 'DTP' and current_claim and current_claim['serviceLines']:
-                    date_qualifier = elements[1] if len(elements) > 1 else ""
-                    date_value = parse_date(elements[3] if len(elements) > 3 else "")
-                    
-                    # 472 = Service date
-                    if date_qualifier == '472':
-                        current_claim['serviceLines'][-1]['serviceDate'] = date_value
+                        service_line['diagnosisPointer'] = safe_int(elements[7])
             
-            # Save last claim
             if current_claim:
                 claims_data.append(current_claim)
             
-            # If no pay-to provider specified, use billing provider
             if not pay_to_provider.get('name'):
                 pay_to_provider = billing_provider.copy()
             
-            # Build section arrays (one per claim)
+            # Build section arrays
             results = []
             
             for claim_data in claims_data:
@@ -380,7 +364,6 @@ def parse_x12_for_viewer(filepath):
                 
                 results.append(sections)
             
-            # Return single array if one claim, otherwise array of arrays
             return results[0] if len(results) == 1 else results
     
     except Exception as e:
@@ -392,14 +375,8 @@ def main():
         print("=" * 70)
         print("X12 Parser for Claim Viewer")
         print("=" * 70)
-        print("\nParses X12 837 files into section-based format for frontend display")
         print("\nUsage:")
         print("  python3 parser_for_viewer.py <input_file> [output_file]")
-        print("\nExamples:")
-        print("  python3 parser_for_viewer.py input_files/837d.txt")
-        print("  python3 parser_for_viewer.py input_files/837d.txt claim.json")
-        print("\nOutput Format:")
-        print("  Section-based array optimized for claim viewer")
         print("=" * 70)
         sys.exit(1)
     
@@ -422,20 +399,18 @@ def main():
     try:
         data = parse_x12_for_viewer(input_file)
         
-        # Save output
         with open(output_file, 'w') as f:
             json.dump(data, f, indent=2)
         
         print(f"✅ Parsing complete!")
         print(f"💾 Output: {output_file}")
         
-        # Count sections
         if isinstance(data, list) and len(data) > 0:
             if isinstance(data[0], dict) and 'section' in data[0]:
                 print(f"📊 Generated {len(data)} sections")
             else:
                 print(f"📊 Multiple claims: {len(data)} claim arrays")
-        
+    
     except Exception as e:
         print(f"❌ Error: {str(e)}")
         import traceback
